@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABC HVAC Services</title>
+<title>Perfect Air Service | HVAC Experts</title>
 
 <style>
 * {
@@ -15,53 +15,96 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    color: #333;
 }
 
 header {
-    background: #0b4f9c;
+    background: linear-gradient(to right, #0b4f9c, #1e88e5);
     color: white;
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
 }
 
 header h1 {
     font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
 }
 
 .btn {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 24px;
+    margin-top: 25px;
+    padding: 14px 28px;
     background: white;
     color: #0b4f9c;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: bold;
+}
+
+.btn:hover {
+    background: #f4f4f4;
 }
 
 section {
     padding: 60px 20px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0b4f9c;
 }
 
 .services {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 .card {
-    background: #f4f4f4;
-    padding: 20px;
+    background: #f8f9fa;
+    padding: 25px;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: #0b4f9c;
+    margin-bottom: 10px;
+}
+
+.about {
+    text-align: center;
+    max-width: 800px;
+}
+
+.contact {
+    text-align: center;
+}
+
+.phone {
+    font-size: 2rem;
+    color: #0b4f9c;
+    font-weight: bold;
+    margin: 20px 0;
 }
 
 footer {
     background: #222;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
+}
+
+.highlight {
+    color: #0b4f9c;
+    font-weight: bold;
 }
 </style>
 </head>
@@ -69,16 +112,19 @@ footer {
 <body>
 
 <header>
-    <h1>ABC HVAC Services</h1>
-    <p>Heating • Cooling • Installation • Repair</p>
-    <a href="#contact" class="btn">Get a Free Estimate</a>
+    <h1>Perfect Air Service</h1>
+    <p>Heating • Cooling • Repair • Maintenance • Replacement</p>
+    <p>Serving Maryland, Virginia & Washington DC</p>
+    <a href="#contact" class="btn">Call Now</a>
 </header>
 
-<section>
+<section class="about">
     <h2>About Us</h2>
     <p>
-        We provide reliable HVAC repair, installation, and maintenance
-        services for residential and commercial customers.
+        At <span class="highlight">Perfect Air Service</span>, we provide
+        professional HVAC solutions throughout the DMV area. Whether you need
+        a system replacement, emergency repair, or routine maintenance,
+        we're committed to keeping your home comfortable year-round.
     </p>
 </section>
 
@@ -86,31 +132,47 @@ footer {
     <h2>Our Services</h2>
 
     <div class="services">
+
         <div class="card">
-            <h3>AC Repair</h3>
-            <p>Fast diagnostics and repair for all major brands.</p>
+            <h3>HVAC Repair</h3>
+            <p>
+                Fast and reliable repair services for air conditioners,
+                furnaces, heat pumps, and complete HVAC systems.
+            </p>
         </div>
 
         <div class="card">
-            <h3>HVAC Installation</h3>
-            <p>Energy-efficient systems installed professionally.</p>
+            <h3>System Replacement</h3>
+            <p>
+                Upgrade your old HVAC equipment with modern,
+                energy-efficient heating and cooling systems.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Maintenance</h3>
-            <p>Keep your equipment running efficiently year-round.</p>
+            <h3>Preventive Maintenance</h3>
+            <p>
+                Regular tune-ups and inspections to improve efficiency,
+                lower energy costs, and prevent breakdowns.
+            </p>
         </div>
+
     </div>
 </section>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Phone: (555) 123-4567</p>
-    <p>Email: info@abchvac.com</p>
+<section id="contact" class="contact">
+    <h2>Contact Perfect Air Service</h2>
+
+    <div class="phone">
+        📞 240-516-9392
+    </div>
+
+    <p>Serving Maryland, Virginia & Washington DC</p>
+    <p>Call today for service, maintenance, or a free replacement estimate.</p>
 </section>
 
 <footer>
-    <p>© 2026 ABC HVAC Services. All Rights Reserved.</p>
+    <p>© 2026 Perfect Air Service. All Rights Reserved.</p>
 </footer>
 
 </body>
