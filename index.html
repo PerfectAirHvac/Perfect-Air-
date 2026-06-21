@@ -3,176 +3,582 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfect Air Service | HVAC Experts</title>
+
+<title>Perfect Air Service | HVAC Experts MD, VA & DC</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+:root{
+    --navy:#071A2E;
+    --navy-light:#0D2744;
+    --blue:#42B7FF;
+    --blue-light:#8DD6FF;
+    --white:#ffffff;
+    --gray:#c9d3de;
+    --card:rgba(255,255,255,.05);
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
 }
 
-header {
-    background: linear-gradient(to right, #0b4f9c, #1e88e5);
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
+html{
+    scroll-behavior:smooth;
 }
 
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+body{
+    background:var(--navy);
+    color:white;
+    line-height:1.6;
 }
 
-header p {
-    font-size: 1.2rem;
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 14px 28px;
-    background: white;
-    color: #0b4f9c;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    background:rgba(7,26,46,.95);
+    backdrop-filter:blur(15px);
 }
 
-.btn:hover {
-    background: #f4f4f4;
+.nav-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 5%;
 }
 
-section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: auto;
+.logo{
+    font-size:1.5rem;
+    font-weight:800;
+    color:var(--blue);
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #0b4f9c;
+.nav-links{
+    display:flex;
+    gap:30px;
 }
 
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
 }
 
-.card {
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.nav-links a:hover{
+    color:var(--blue);
 }
 
-.card h3 {
-    color: #0b4f9c;
-    margin-bottom: 10px;
+.call-btn{
+    background:var(--blue);
+    padding:12px 22px;
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
 }
 
-.about {
-    text-align: center;
-    max-width: 800px;
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(7,26,46,.75), rgba(7,26,46,.85)),
+    url("https://images.unsplash.com/photo-1581092918484-8313f94a6b6f?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
 }
 
-.contact {
-    text-align: center;
+.hero-content{
+    max-width:750px;
 }
 
-.phone {
-    font-size: 2rem;
-    color: #0b4f9c;
-    font-weight: bold;
-    margin: 20px 0;
+.hero h1{
+    font-size:4rem;
+    line-height:1.1;
+    margin-bottom:20px;
 }
 
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 25px;
+.hero span{
+    color:var(--blue);
 }
 
-.highlight {
-    color: #0b4f9c;
-    font-weight: bold;
+.hero p{
+    color:var(--gray);
+    font-size:1.2rem;
+    margin-bottom:30px;
 }
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.primary{
+    background:var(--blue);
+    color:white;
+}
+
+.secondary{
+    border:2px solid var(--blue);
+    color:var(--blue);
+}
+
+/* SECTIONS */
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:2.8rem;
+}
+
+.section-title span{
+    color:var(--blue);
+}
+
+/* SERVICES */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:30px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:var(--blue);
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:25px;
+}
+
+.about-text h2{
+    margin-bottom:20px;
+    font-size:2.5rem;
+}
+
+.about-text span{
+    color:var(--blue);
+}
+
+/* APPOINTMENT */
+
+.form-box{
+    background:var(--card);
+    border-radius:25px;
+    padding:40px;
+    max-width:900px;
+    margin:auto;
+}
+
+form{
+    display:grid;
+    gap:20px;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#102b48;
+    color:white;
+}
+
+textarea{
+    min-height:140px;
+}
+
+button{
+    background:var(--blue);
+    color:white;
+    border:none;
+    padding:18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+/* REVIEWS */
+
+.review{
+    text-align:center;
+}
+
+.stars{
+    color:#ffd700;
+    font-size:1.4rem;
+    margin-bottom:15px;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#051220;
+    text-align:center;
+    padding:30px;
+}
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:2.8rem;
+}
+
+.about{
+    grid-template-columns:1fr;
+}
+
+.nav-links{
+    display:none;
+}
+}
+
 </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Perfect Air Service</h1>
-    <p>Heating • Cooling • Repair • Maintenance • Replacement</p>
-    <p>Serving Maryland, Virginia & Washington DC</p>
-    <a href="#contact" class="btn">Call Now</a>
-</header>
+<nav>
+<div class="nav-container">
+<div class="logo">Perfect Air Service</div>
 
-<section class="about">
-    <h2>About Us</h2>
-    <p>
-        At <span class="highlight">Perfect Air Service</span>, we provide
-        professional HVAC solutions throughout the DMV area. Whether you need
-        a system replacement, emergency repair, or routine maintenance,
-        we're committed to keeping your home comfortable year-round.
-    </p>
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#appointment">Appointment</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+</div>
+
+<a class="call-btn" href="tel:+13015551234">
+Call Now
+</a>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<div class="container">
+
+<div class="hero-content">
+
+<h1>
+Perfect <span>Air Service</span>
+</h1>
+
+<p>
+Professional HVAC solutions serving Maryland, Virginia,
+and Washington DC. Heating, Cooling, Indoor Air Quality,
+Repairs, Installations, and Maintenance.
+</p>
+
+<div class="hero-buttons">
+<a href="#appointment" class="btn primary">Book Appointment</a>
+<a href="#about" class="btn secondary">Learn More</a>
+</div>
+
+</div>
+
+</div>
 </section>
 
-<section>
-    <h2>Our Services</h2>
+<section id="services">
 
-    <div class="services">
+<div class="container">
 
-        <div class="card">
-            <h3>HVAC Repair</h3>
-            <p>
-                Fast and reliable repair services for air conditioners,
-                furnaces, heat pumps, and complete HVAC systems.
-            </p>
-        </div>
+<div class="section-title">
+<h2>Our <span>Services</span></h2>
+</div>
 
-        <div class="card">
-            <h3>System Replacement</h3>
-            <p>
-                Upgrade your old HVAC equipment with modern,
-                energy-efficient heating and cooling systems.
-            </p>
-        </div>
+<div class="grid">
 
-        <div class="card">
-            <h3>Preventive Maintenance</h3>
-            <p>
-                Regular tune-ups and inspections to improve efficiency,
-                lower energy costs, and prevent breakdowns.
-            </p>
-        </div>
+<div class="card">
+<h3>Air Conditioning Repair</h3>
+<p>Fast and reliable AC diagnostics and repairs to restore comfort quickly.</p>
+</div>
 
-    </div>
+<div class="card">
+<h3>AC Installation</h3>
+<p>Energy-efficient cooling systems professionally installed.</p>
+</div>
+
+<div class="card">
+<h3>Heating Services</h3>
+<p>Furnaces, heat pumps, and complete heating system repairs.</p>
+</div>
+
+<div class="card">
+<h3>Indoor Air Quality</h3>
+<p>Air purification, filtration, humidity control, and ventilation solutions.</p>
+</div>
+
+<div class="card">
+<h3>Maintenance Plans</h3>
+<p>Prevent costly breakdowns with scheduled HVAC maintenance.</p>
+</div>
+
+<div class="card">
+<h3>Emergency Service</h3>
+<p>When comfort cannot wait, our team is ready to help.</p>
+</div>
+
+</div>
+</div>
+
 </section>
 
-<section id="contact" class="contact">
-    <h2>Contact Perfect Air Service</h2>
+<section id="about">
 
-    <div class="phone">
-        📞 240-516-9392
-    </div>
+<div class="container">
 
-    <p>Serving Maryland, Virginia & Washington DC</p>
-    <p>Call today for service, maintenance, or a free replacement estimate.</p>
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1000&q=80">
+
+<div class="about-text">
+
+<h2>About <span>Perfect Air Service</span></h2>
+
+<p>
+Perfect Air Service proudly serves homeowners and businesses
+throughout Maryland, Virginia, and Washington DC.
+</p>
+
+<br>
+
+<p>
+Our mission is to provide dependable heating and cooling
+solutions with exceptional customer service and honest pricing.
+We believe every customer deserves comfort, reliability,
+and professional workmanship.
+</p>
+
+<br>
+
+<p>
+✔ Licensed & Insured<br>
+✔ Residential & Commercial<br>
+✔ Experienced Technicians<br>
+✔ Customer Satisfaction Focused
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="appointment">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Schedule an <span>Appointment</span></h2>
+</div>
+
+<div class="form-box">
+
+<form>
+
+<input type="text" placeholder="Full Name">
+
+<input type="email" placeholder="Email Address">
+
+<input type="tel" placeholder="Phone Number">
+
+<input type="text" placeholder="Service Address">
+
+<select>
+<option>Select Service</option>
+<option>AC Repair</option>
+<option>AC Installation</option>
+<option>Heating Repair</option>
+<option>Heating Installation</option>
+<option>Maintenance</option>
+<option>Indoor Air Quality</option>
+</select>
+
+<input type="date">
+
+<textarea placeholder="Tell us about your HVAC issue..."></textarea>
+
+<button type="submit">
+Request Appointment
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="reviews">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Customer <span>Reviews</span></h2>
+</div>
+
+<div class="grid">
+
+<div class="card review">
+<div class="stars">★★★★★</div>
+<p>
+Perfect Air Service fixed our AC the same day.
+Professional and affordable.
+</p>
+<br>
+<strong>Sarah M.</strong>
+</div>
+
+<div class="card review">
+<div class="stars">★★★★★</div>
+<p>
+Excellent customer service and very knowledgeable technicians.
+</p>
+<br>
+<strong>David R.</strong>
+</div>
+
+<div class="card review">
+<div class="stars">★★★★★</div>
+<p>
+Our heating system has never worked better.
+Highly recommended.
+</p>
+<br>
+<strong>Michael T.</strong>
+</div>
+
+</div>
+
+<br><br>
+
+<div class="form-box">
+
+<h3 style="margin-bottom:20px;">Leave a Review</h3>
+
+<form>
+
+<input type="text" placeholder="Your Name">
+
+<select>
+<option>★★★★★</option>
+<option>★★★★☆</option>
+<option>★★★☆☆</option>
+<option>★★☆☆☆</option>
+<option>★☆☆☆☆</option>
+</select>
+
+<textarea placeholder="Write your review"></textarea>
+
+<button type="submit">Submit Review</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container contact">
+
+<div class="section-title">
+<h2>Contact <span>Us</span></h2>
+</div>
+
+<p><strong>Perfect Air Service</strong></p>
+
+<p>Serving Maryland • Virginia • Washington DC</p>
+
+<p>Phone: (301) 555-1234</p>
+
+<p>Email: info@perfectairservice.com</p>
+
+<p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+
+</div>
+
 </section>
 
 <footer>
-    <p>© 2026 Perfect Air Service. All Rights Reserved.</p>
+
+<p>
+© 2026 Perfect Air Service. All Rights Reserved.
+</p>
+
 </footer>
 
 </body>
