@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfect Air | DMV HVAC Installation, Repair & Maintenance</title>
-    <!-- FontAwesome for clean icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Modern mobile-first reset */
         * {
             margin: 0;
             padding: 0;
@@ -19,60 +17,14 @@
         body {
             color: #2c3e50;
             overflow-x: hidden;
-            background: linear-gradient(180deg, #99ccff 0%, #cce6ff 40%, #e6f2ff 100%);
+            /* Matches the deep blue at the top of your logo and transitions smoothly down */
+            background: linear-gradient(180deg, #3a8fd1 0%, #7ec0ee 20%, #cce6ff 50%, #e6f2ff 100%);
             min-height: 100vh;
-            padding-bottom: 70px; /* Space for mobile sticky bottom navigation */
+            padding-bottom: 70px;
         }
 
-        /* --- GENTLE MOVING CLOUD BACKGROUND EFFECT --- */
-        .cloud-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        .cloud {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 100px;
-            filter: blur(6px);
-            box-shadow: 0 8px 20px rgba(255,255,255,0.4);
-        }
-        .cloud::before, .cloud::after {
-            content: '';
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-        }
-        .cloud:nth-child(1) {
-            width: 220px; height: 70px; top: 12%; left: -250px;
-            animation: floatCloud 50s linear infinite;
-        }
-        .cloud:nth-child(1)::before { width: 90px; height: 90px; top: -45px; left: 35px; }
-        .cloud:nth-child(1)::after { width: 110px; height: 110px; top: -55px; left: 85px; }
-
-        .cloud:nth-child(2) {
-            width: 160px; height: 50px; top: 50%; left: -180px;
-            animation: floatCloud 35s linear infinite;
-            animation-delay: 12s;
-        }
-        .cloud:nth-child(2)::before { width: 65px; height: 65px; top: -32px; left: 22px; }
-        .cloud:nth-child(2)::after { width: 75px; height: 75px; top: -38px; left: 60px; }
-
-        @keyframes floatCloud {
-            0% { left: -260px; }
-            100% { left: 105vw; }
-        }
-
-        /* Responsive Header Navigation */
         header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             position: fixed;
@@ -93,81 +45,86 @@
         }
 
         .logo-image {
-            height: 38px;
+            height: 35px;
             width: auto;
+            border-radius: 4px;
             object-fit: contain;
         }
 
         nav a {
             text-decoration: none;
-            color: #4a5568;
+            color: #1a365d;
             font-weight: 600;
             margin-left: 15px;
             font-size: 0.95rem;
-            transition: color 0.2s;
         }
-        nav a:hover { color: #2b6cb0; }
 
         @media (max-width: 580px) {
             nav { display: none; }
             header { justify-content: center; }
         }
 
-        /* Hero Homepage Layout matching cloud theme */
+        /* Hero Homepage Layout - Smoother Integration */
         .hero-homepage {
-            padding: 130px 20px 40px 20px;
+            padding: 110px 0px 30px 0px;
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        .hero-banner-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 0 15px;
+            margin-bottom: 10px;
+        }
+
         .hero-logo-large {
-            max-width: 290px;
             width: 100%;
             height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.08));
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: block;
         }
 
         .hero-homepage h1 {
-            font-size: 2.1rem;
-            color: #1a365d;
-            margin-bottom: 12px;
+            font-size: 2.2rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin: 20px 15px 10px 15px;
             font-weight: 800;
-            line-height: 1.25;
+            line-height: 1.2;
         }
 
         .hero-homepage p {
             font-size: 1.1rem;
-            color: #4a5568;
+            color: #f0f7ff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
             margin-bottom: 20px;
+            padding: 0 20px;
             max-width: 550px;
         }
 
         @media (min-width: 768px) {
-            .hero-homepage { padding: 170px 20px 60px 20px; max-width: 900px; }
-            .hero-logo-large { max-width: 420px; }
-            .hero-homepage h1 { font-size: 3rem; }
+            .hero-homepage { padding: 140px 0px 40px 0px; }
+            .hero-banner-container { max-width: 750px; }
+            .hero-homepage h1 { font-size: 3.2rem; }
         }
 
-        /* Main Container Layout */
         .container {
             max-width: 850px;
             margin: 0 auto;
             padding: 0 15px;
         }
 
-        /* Structural Cards */
         .section-card {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 24px;
             padding: 25px 20px;
             margin-bottom: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
         }
         @media (min-width: 768px) {
             .section-card { padding: 40px; }
@@ -188,7 +145,6 @@
             color: #4a5568;
         }
 
-        /* --- UPDATED WORK IMAGE GALLERY GRID --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -197,9 +153,7 @@
         }
 
         @media (max-width: 580px) {
-            .gallery-grid {
-                grid-template-columns: 1fr; /* Nice stacked vertical view on mobile screens */
-            }
+            .gallery-grid { grid-template-columns: 1fr; }
         }
 
         .gallery-item {
@@ -208,7 +162,7 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             background: #e2e8f0;
-            aspect-ratio: 3 / 4; /* Keeps presentation clean and consistent */
+            aspect-ratio: 3 / 4;
         }
 
         .gallery-item img {
@@ -218,9 +172,7 @@
             transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.04);
-        }
+        .gallery-item:hover img { transform: scale(1.04); }
 
         .gallery-caption {
             position: absolute;
@@ -234,7 +186,6 @@
             font-weight: 600;
         }
 
-        /* Contact Details Layout */
         .info-stack {
             display: flex;
             flex-direction: column;
@@ -243,7 +194,7 @@
         }
 
         .info-box {
-            background: rgba(237, 242, 247, 0.8);
+            background: #edf2f7;
             padding: 16px;
             border-radius: 16px;
             display: flex;
@@ -262,7 +213,6 @@
         .info-box h3 { font-size: 0.85rem; color: #718096; text-transform: uppercase; }
         .info-box p { font-size: 1.1rem; font-weight: 700; color: #2d3748; }
 
-        /* Form styling */
         .form-group {
             display: flex;
             flex-direction: column;
@@ -292,7 +242,6 @@
             box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
         }
 
-        /* Review Section Custom Styling */
         .review-form {
             background: #edf2f7;
             padding: 20px;
@@ -316,7 +265,6 @@
         }
         .stars { color: #ecc94b; }
 
-        /* Bottom Menu Action Bar targets */
         .mobile-action-bar {
             display: flex;
             position: fixed;
@@ -364,16 +312,9 @@
 </head>
 <body>
 
-    <!-- Moving Cloud Background Layer -->
-    <div class="cloud-container">
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-    </div>
-
     <header>
         <div class="logo-area">
-            <!-- Mini navbar logo updated -->
-            <img src="IMG_9926.jpeg" alt="Perfect Air Logo" class="logo-image">
+            <img src="IMG_9926.jpeg" alt="Perfect Air" class="logo-image">
         </div>
         <nav>
             <a href="#about">About</a>
@@ -383,20 +324,20 @@
         </nav>
     </header>
 
-    <!-- Hero Section with Cloud Text Logo asset from IMG_9926.jpeg -->
     <section class="hero-homepage">
-        <img src="IMG_9926.jpeg" alt="Perfect Air Cloud Logo" class="hero-logo-large">
-        <h1>Reliable Indoor Comfort For Your Home</h1>
+        <div class="hero-banner-container">
+            <img src="IMG_9926.jpeg" alt="Perfect Air Cloud Logo" class="hero-logo-large">
+        </div>
+        <h1>Reliable Indoor Comfort</h1>
         <p>Professional heating, cooling, and ventilation installations across MD, VA, and Washington D.C.</p>
     </section>
 
     <div class="container">
-
         <!-- About Card -->
         <section id="about" class="section-card">
             <h2><i class="fa fa-info-circle"></i> About Us</h2>
             <p class="about-text">
-                Family-owned HVAC company proudly serving the DMV areas (DC, Maryland and Virginia). We specialize in air conditioning repair, furnace installation, heating system maintenance, and full HVAC system replacements. Our team provides fast diagnostics, honest pricing, and same-week service whenever possible. Whether you need emergency AC repair in the summer or furnace service in the winter, we deliver reliable comfort solutions for your home. Licensed and insured. Free estimates available. Call today for professional heating and cooling service you can trust.
+                Family-owned HVAC company proudly serving the DMV areas (DC, Maryland and Virginia). We specialize in air conditioning repair, furnace installation, heating system maintenance, and full HVAC system replacements. Our team provides fast diagnostics, honest pricing, and same-week service whenever possible. Licensed and insured. Free estimates available.
             </p>
             
             <div class="info-stack">
@@ -417,44 +358,18 @@
             </div>
         </section>
 
-        <!-- --- WORK GALLERY DISPLAYING ALL YOUR SPECIFIED UPLOADS --- -->
+        <!-- Gallery Section -->
         <section id="work" class="section-card">
             <h2><i class="fa fa-tools"></i> Our Work</h2>
-            <p style="color: #4a5568; margin-bottom: 15px; font-size: 0.95rem;">Take a look at some of our recent professional HVAC installations, commercial systems, and precision tune-ups completed throughout the DMV area.</p>
-            
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="IMG_9763.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Commercial Rooftop Replacement</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_9761.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Residential System Upgrade</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_9105.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">AC Condenser Tune-up</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8652.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Precision Calibration Testing</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8644.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Packaged System Maintenance</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8651.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Commercial Unit Deployment</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8654.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Custom Ductwork Inspection</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8365.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Outdoor Heat Pump Repair</div>
-                </div>
+                <div class="gallery-item"><img src="IMG_9763.jpeg"><div class="gallery-caption">Commercial Rooftop Replacement</div></div>
+                <div class="gallery-item"><img src="IMG_9761.jpeg"><div class="gallery-caption">Residential System Upgrade</div></div>
+                <div class="gallery-item"><img src="IMG_9105.jpeg"><div class="gallery-caption">AC Condenser Tune-up</div></div>
+                <div class="gallery-item"><img src="IMG_8652.jpeg"><div class="gallery-caption">Precision Calibration</div></div>
+                <div class="gallery-item"><img src="IMG_8644.jpeg"><div class="gallery-caption">Packaged System Maintenance</div></div>
+                <div class="gallery-item"><img src="IMG_8651.jpeg"><div class="gallery-caption">Commercial Unit Deployment</div></div>
+                <div class="gallery-item"><img src="IMG_8654.jpeg"><div class="gallery-caption">Custom Ductwork Inspection</div></div>
+                <div class="gallery-item"><img src="IMG_8365.jpeg"><div class="gallery-caption">Outdoor Heat Pump Repair</div></div>
             </div>
         </section>
 
@@ -464,64 +379,44 @@
             <form onsubmit="sendAppointmentEmail(event)">
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" required placeholder="John Doe">
+                    <input type="text" id="name" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required placeholder="(240) 516-9392">
+                    <input type="tel" id="phone" required>
                 </div>
                 <div class="form-group">
                     <label for="service">Service Needed</label>
                     <select id="service" required>
-                        <option value="">-- select service option --</option>
+                        <option value="">-- select option --</option>
                         <option value="AC Repair/Replacement">AC Repair or Replacement</option>
                         <option value="Furnace/Heating Service">Furnace / Heating Service</option>
                         <option value="System Maintenance">HVAC System Maintenance</option>
-                        <option value="Free Estimate Request">Free Project Estimate</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="location">City / State</label>
-                    <input type="text" id="location" required placeholder="Silver Spring, MD">
-                </div>
-                <div class="form-group">
-                    <label for="notes">Notes or System Issues</label>
-                    <textarea id="notes" rows="3" placeholder="Describe what's going on..."></textarea>
+                    <input type="text" id="location" required>
                 </div>
                 <button type="submit" class="submit-btn">Send Booking Request</button>
             </form>
         </section>
 
-        <!-- Interactive Reviews Card -->
+        <!-- Reviews Card -->
         <section id="reviews" class="section-card">
             <h2><i class="fa fa-star"></i> Customer Reviews</h2>
-            
-            <div class="review-form">
-                <h3 style="margin-bottom:12px; font-size:1rem;">Submit Live Review</h3>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <input type="text" id="revName" placeholder="Your Name" required>
-                    <select id="revStars">
-                        <option value="⭐⭐⭐⭐⭐">5 Stars ⭐⭐⭐⭐⭐</option>
-                        <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐⭐</option>
-                    </select>
-                    <textarea id="revText" rows="2" placeholder="Write your review here..." required></textarea>
-                    <button type="button" onclick="addLocalReview()" class="submit-btn" style="margin-top:0; padding:12px;">Post Locally</button>
-                </div>
-            </div>
-
             <div id="reviewsContainer">
                 <div class="review-post">
                     <div class="review-header">
                         <span>Carlos M. (Bethesda, MD)</span>
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                     </div>
-                    <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation for a brand new system at an honest price."</p>
+                    <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation."</p>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Sticky Mobile Touch Action Bar -->
     <div class="mobile-action-bar">
         <a href="tel:2405169392" class="action-bar-btn btn-call"><i class="fa fa-phone-alt"></i> Call Now</a>
         <a href="#book" class="action-bar-btn btn-book"><i class="fa fa-calendar-alt"></i> Book Online</a>
@@ -529,10 +424,7 @@
 
     <footer>
         <p>&copy; 2026 Perfect Air. All Rights Reserved.</p>
-        <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.85;">
-            Licensed & Insured | DC, Maryland, & Virginia<br>
-            <a href="https://instagram.com/perfectairservice" target="_blank" style="margin-top: 5px; display:inline-block;"><i class="fab fa-instagram"></i> @perfectairservice</a>
-        </p>
+        <p><a href="https://instagram.com/perfectairservice" target="_blank">@perfectairservice</a></p>
     </footer>
 
     <script>
@@ -542,44 +434,7 @@
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
             const location = document.getElementById('location').value;
-            const notes = document.getElementById('notes').value;
-            
-            const emailTo = "helpperfectair@gmail.com";
-            const subject = encodeURIComponent(`Perfect Air Mobile Booking: ${service}`);
-            const body = encodeURIComponent(
-                `Perfect Air Appointment Detail Confirmation Form:\n\n` +
-                `Customer Name: ${name}\n` +
-                `Phone Number: ${phone}\n` +
-                `Location: ${location}\n` +
-                `Service Requested: ${service}\n\n` +
-                `Customer Notes:\n${notes}`
-            );
-            window.location.href = `mailto:${emailTo}?subject=${subject}?body=${body}`;
-        }
-
-        function addLocalReview() {
-            const nameInput = document.getElementById('revName');
-            const starsInput = document.getElementById('revStars');
-            const textInput = document.getElementById('revText');
-            
-            if(!nameInput.value || !textInput.value) {
-                alert("Please fill out your name and review content fields!");
-                return;
-            }
-            
-            const container = document.getElementById('reviewsContainer');
-            const newReview = document.createElement('div');
-            newReview.className = 'review-post';
-            newReview.innerHTML = `
-                <div class="review-header">
-                    <span>${nameInput.value}</span>
-                    <span class="stars">${starsInput.value}</span>
-                </div>
-                <p>"${textInput.value}"</p>
-            `;
-            container.insertBefore(newReview, container.firstChild);
-            nameInput.value = '';
-            textInput.value = '';
+            window.location.href = `mailto:helpperfectair@gmail.com?subject=Booking&body=${name}-${phone}-${service}-${location}`;
         }
     </script>
 </body>
