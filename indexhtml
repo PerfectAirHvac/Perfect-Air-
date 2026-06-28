@@ -380,11 +380,11 @@
                         <p>(240) 516-9392</p>
                     </div>
                 </a>
-                <a href="mailto:jexxersondiaz@gmail.com" class="info-box">
+                <a href="mailto:helpperfectair@gmail.com" class="info-box">
                     <i class="fa fa-envelope"></i>
                     <div>
                         <h3>Email Contact</h3>
-                        <p>jexxersondiaz@gmail.com</p>
+                        <p>helpperfecair@gmail.com</p>
                     </div>
                 </a>
             </div>
@@ -434,7 +434,7 @@
                     <input type="text" id="revName" placeholder="Your Name" required>
                     <select id="revStars">
                         <option value="⭐⭐⭐⭐⭐">5 Stars ⭐⭐⭐⭐⭐</option>
-                        <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐ Graham</option>
+                        <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐ graham</option>
                     </select>
                     <textarea id="revText" rows="2" placeholder="Write your review here..." required></textarea>
                     <button type="button" onclick="addLocalReview()" class="submit-btn" style="margin-top:0; padding:12px;">Post Locally</button>
@@ -476,7 +476,7 @@
             const location = document.getElementById('location').value;
             const notes = document.getElementById('notes').value;
             
-            const emailTo = "jexxersondiaz@gmail.com";
+            const emailTo = "helpperfectair@gmail.com";
             const subject = encodeURIComponent(`Perfect Air Mobile Booking: ${service}`);
             const body = encodeURIComponent(
                 `Perfect Air Appointment Detail Confirmation Form:\n\n` +
