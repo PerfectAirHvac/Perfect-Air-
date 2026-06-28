@@ -109,11 +109,11 @@
         nav a:hover { color: #2b6cb0; }
 
         @media (max-width: 580px) {
-            nav { display: none; } /* Moves to mobile action bar targets */
+            nav { display: none; }
             header { justify-content: center; }
         }
 
-        /* Hero / Dynamic Homepage Area Layout matching image_6.png theme */
+        /* Hero Homepage Layout matching cloud theme */
         .hero-homepage {
             padding: 130px 20px 40px 20px;
             text-align: center;
@@ -153,7 +153,7 @@
             .hero-homepage h1 { font-size: 3rem; }
         }
 
-        /* Main App Container Layout */
+        /* Main Container Layout */
         .container {
             max-width: 850px;
             margin: 0 auto;
@@ -188,17 +188,17 @@
             color: #4a5568;
         }
 
-        /* --- NEW WORK IMAGE GALLERY LAYOUT --- */
+        /* --- UPDATED WORK IMAGE GALLERY GRID --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 14px;
             margin-top: 15px;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 580px) {
             .gallery-grid {
-                grid-template-columns: 1fr; /* Stacks vertically perfectly on smaller phones */
+                grid-template-columns: 1fr; /* Nice stacked vertical view on mobile screens */
             }
         }
 
@@ -206,9 +206,9 @@
             position: relative;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             background: #e2e8f0;
-            aspect-ratio: 3 / 4; /* Maintains uniform clean vertical proportions */
+            aspect-ratio: 3 / 4; /* Keeps presentation clean and consistent */
         }
 
         .gallery-item img {
@@ -227,14 +227,14 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0,0,0,0.75));
             color: white;
             padding: 15px 12px;
             font-size: 0.9rem;
             font-weight: 600;
         }
 
-        /* Contact details interactive container links */
+        /* Contact Details Layout */
         .info-stack {
             display: flex;
             flex-direction: column;
@@ -262,7 +262,7 @@
         .info-box h3 { font-size: 0.85rem; color: #718096; text-transform: uppercase; }
         .info-box p { font-size: 1.1rem; font-weight: 700; color: #2d3748; }
 
-        /* Form Controls */
+        /* Form styling */
         .form-group {
             display: flex;
             flex-direction: column;
@@ -292,7 +292,7 @@
             box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
         }
 
-        /* Review Engines Styles */
+        /* Review Section Custom Styling */
         .review-form {
             background: #edf2f7;
             padding: 20px;
@@ -316,7 +316,7 @@
         }
         .stars { color: #ecc94b; }
 
-        /* Mobile Floating Thumb Bar navigation target */
+        /* Bottom Menu Action Bar targets */
         .mobile-action-bar {
             display: flex;
             position: fixed;
@@ -372,8 +372,8 @@
 
     <header>
         <div class="logo-area">
-            <!-- Uses your cloud text asset from image_6.png as the tiny top-left nav logo -->
-            <img src="image_6.png" alt="Perfect Air Logo" class="logo-image">
+            <!-- Mini navbar logo updated -->
+            <img src="IMG_9926.jpeg" alt="Perfect Air Logo" class="logo-image">
         </div>
         <nav>
             <a href="#about">About</a>
@@ -383,16 +383,16 @@
         </nav>
     </header>
 
-    <!-- Homepage Top Section with large Logo as requested -->
+    <!-- Hero Section with Cloud Text Logo asset from IMG_9926.jpeg -->
     <section class="hero-homepage">
-        <img src="image_6.png" alt="Perfect Air Cloud Logo" class="hero-logo-large">
+        <img src="IMG_9926.jpeg" alt="Perfect Air Cloud Logo" class="hero-logo-large">
         <h1>Reliable Indoor Comfort For Your Home</h1>
         <p>Professional heating, cooling, and ventilation installations across MD, VA, and Washington D.C.</p>
     </section>
 
     <div class="container">
 
-        <!-- About Us Card -->
+        <!-- About Card -->
         <section id="about" class="section-card">
             <h2><i class="fa fa-info-circle"></i> About Us</h2>
             <p class="about-text">
@@ -417,36 +417,48 @@
             </div>
         </section>
 
-        <!-- --- NEW DYNAMIC PHOTO GALLERY SECTION --- -->
+        <!-- --- WORK GALLERY DISPLAYING ALL YOUR SPECIFIED UPLOADS --- -->
         <section id="work" class="section-card">
             <h2><i class="fa fa-tools"></i> Our Work</h2>
-            <p style="color: #4a5568; margin-bottom: 15px; font-size: 0.95rem;">Take a look at some of our recent professional HVAC installations, custom repairs, and system diagnostics completed throughout the DMV area.</p>
+            <p style="color: #4a5568; margin-bottom: 15px; font-size: 0.95rem;">Take a look at some of our recent professional HVAC installations, commercial systems, and precision tune-ups completed throughout the DMV area.</p>
             
             <div class="gallery-grid">
-                <!-- Photo 2 Slot (image_7.png) -->
                 <div class="gallery-item">
-                    <img src="image_7.png" alt="Rooftop HVAC Installation">
+                    <img src="IMG_9763.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Commercial Rooftop Replacement</div>
                 </div>
-                <!-- Photo 3 Slot (image_8.png) -->
                 <div class="gallery-item">
-                    <img src="image_8.png" alt="AC Condenser Diagnostic Testing">
-                    <div class="gallery-caption">Residential AC Diagnostic Maintenance</div>
+                    <img src="IMG_9761.jpeg" alt="HVAC Work Installation">
+                    <div class="gallery-caption">Residential System Upgrade</div>
                 </div>
-                <!-- Photo 4 Slot (image_9.png) -->
                 <div class="gallery-item">
-                    <img src="image_9.png" alt="HVAC Repair Maintenance Hardware">
-                    <div class="gallery-caption">Precision Repair Safety Setup</div>
+                    <img src="IMG_9105.jpeg" alt="HVAC Work Installation">
+                    <div class="gallery-caption">AC Condenser Tune-up</div>
                 </div>
-                <!-- Photo 5 Slot (image_10.png) -->
                 <div class="gallery-item">
-                    <img src="image_10.png" alt="Heavy Commercial Unit Assembly">
-                    <div class="gallery-caption">Full Packaged System Installation</div>
+                    <img src="IMG_8652.jpeg" alt="HVAC Work Installation">
+                    <div class="gallery-caption">Precision Calibration Testing</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_8644.jpeg" alt="HVAC Work Installation">
+                    <div class="gallery-caption">Packaged System Maintenance</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_8651.jpeg" alt="HVAC Work Installation">
+                    <div class="gallery-caption">Commercial Unit Deployment</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_8654.jpeg" alt="HVAC Work Installation">
+                    <div class="gallery-caption">Custom Ductwork Inspection</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_8365.jpeg" alt="HVAC Work Installation">
+                    <div class="gallery-caption">Outdoor Heat Pump Repair</div>
                 </div>
             </div>
         </section>
 
-        <!-- Appointment Form Card -->
+        <!-- Booking Form Card -->
         <section id="book" class="section-card">
             <h2><i class="fa fa-calendar-check"></i> Book Appointment</h2>
             <form onsubmit="sendAppointmentEmail(event)">
@@ -509,7 +521,7 @@
         </section>
     </div>
 
-    <!-- Sticky Mobile Touch Quick Action Bar -->
+    <!-- Sticky Mobile Touch Action Bar -->
     <div class="mobile-action-bar">
         <a href="tel:2405169392" class="action-bar-btn btn-call"><i class="fa fa-phone-alt"></i> Call Now</a>
         <a href="#book" class="action-bar-btn btn-book"><i class="fa fa-calendar-alt"></i> Book Online</a>
@@ -542,7 +554,7 @@
                 `Service Requested: ${service}\n\n` +
                 `Customer Notes:\n${notes}`
             );
-            window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:${emailTo}?subject=${subject}?body=${body}`;
         }
 
         function addLocalReview() {
