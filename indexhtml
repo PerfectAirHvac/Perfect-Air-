@@ -1,179 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfect Air Service | HVAC Experts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Air | DMV HVAC Installation, Repair & Maintenance</title>
+    <!-- FontAwesome for clean icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern mobile-first reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: #2c3e50;
+            overflow-x: hidden;
+            /* Matches the gradient from image_4.png and image_5.png */
+            background: linear-gradient(180deg, #99ccff 0%, #cce6ff 40%, #e6f2ff 100%);
+            min-height: 100vh;
+            padding-bottom: 70px; /* Space for mobile sticky bottom navigation */
+        }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* --- SMOOTH REALISTIC MOBILE CLOUD EFFECT --- */
+        .cloud-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.65;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-}
+        .cloud {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 100px;
+            filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(255,255,255,0.4);
+        }
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+        }
+        .cloud:nth-child(1) {
+            width: 200px; height: 60px; top: 15%; left: -220px;
+            animation: floatCloud 45s linear infinite;
+        }
+        .cloud:nth-child(1)::before { width: 80px; height: 80px; top: -40px; left: 30px; }
+        .cloud:nth-child(1)::after { width: 100px; height: 100px; top: -50px; left: 80px; }
 
-header {
-    background: linear-gradient(to right, #0b4f9c, #1e88e5);
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-}
+        .cloud:nth-child(2) {
+            width: 140px; height: 45px; top: 45%; left: -160px;
+            animation: floatCloud 30s linear infinite;
+            animation-delay: 10s;
+            opacity: 0.8;
+        }
+        .cloud:nth-child(2)::before { width: 60px; height: 60px; top: -30px; left: 20px; }
+        .cloud:nth-child(2)::after { width: 70px; height: 70px; top: -35px; left: 55px; }
 
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
+        @keyframes floatCloud {
+            0% { transform: translateX(-10px); left: -250px; }
+            100% { transform: translateX(100vw); left: 100px; }
+        }
 
-header p {
-    font-size: 1.2rem;
-}
+        /* Responsive Header Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 14px 28px;
-    background: white;
-    color: #0b4f9c;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-}
+        /* Clean logo layout modeling image_4.png */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-.btn:hover {
-    background: #f4f4f4;
-}
+        .logo-cloud-icon {
+            font-size: 1.5rem;
+            color: #3182ce;
+        }
 
-section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: auto;
-}
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #2b6cb0;
+            letter-spacing: 0.5px;
+        }
 
-h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #0b4f9c;
-}
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 600;
+            margin-left: 15px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: #2b6cb0; }
 
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
+        /* Mobile specific hide/display rules */
+        @media (max-width: 480px) {
+            nav { display: none; } /* Navigation moves to touch bar on mobile */
+            header { justify-content: center; }
+        }
 
-.card {
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+        /* Hero Landing Section */
+        .hero {
+            padding: 120px 20px 40px 20px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-.card h3 {
-    color: #0b4f9c;
-    margin-bottom: 10px;
-}
+        .hero h1 {
+            font-size: 2.2rem;
+            color: #1a365d;
+            margin-bottom: 12px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
 
-.about {
-    text-align: center;
-    max-width: 800px;
-}
+        @media (min-width: 768px) {
+            .hero { padding: 160px 20px 60px 20px; max-width: 800px; }
+            .hero h1 { font-size: 3.2rem; }
+        }
 
-.contact {
-    text-align: center;
-}
+        .hero p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
 
-.phone {
-    font-size: 2rem;
-    color: #0b4f9c;
-    font-weight: bold;
-    margin: 20px 0;
-}
+        /* Main App Container layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 25px;
-}
+        /* Card Elements */
+        .section-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 24px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        @media (min-width: 768px) {
+            .section-card { padding: 40px; }
+        }
 
-.highlight {
-    color: #0b4f9c;
-    font-weight: bold;
-}
-</style>
+        h2 {
+            font-size: 1.6rem;
+            color: #2b6cb0;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #4a5568;
+        }
+
+        /* Contact Details Boxes */
+        .info-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .info-box {
+            background: rgba(237, 242, 247, 0.8);
+            padding: 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+        .info-box:active { background: #e2e8f0; }
+
+        .info-box i {
+            font-size: 1.4rem;
+            color: #3182ce;
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .info-box h3 { font-size: 0.9rem; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-box p { font-size: 1.1rem; font-weight: 700; color: #2d3748; margin-top: 2px; }
+
+        /* Form Controls optimized for mobile touch targets */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        input, select, textarea {
+            padding: 14px;
+            border: 1px solid #cbd5e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: white;
+            width: 100%;
+            -webkit-appearance: none; /* Uniform iOS display override */
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.25);
+        }
+
+        .submit-btn {
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            margin-top: 8px;
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+        }
+        .submit-btn:active { background: #1a365d; }
+
+        /* Mobile Star Reviews Layout */
+        .review-form {
+            background: #edf2f7;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+        }
+
+        .review-post {
+            background: white;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4299e1;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .stars { color: #ecc94b; }
+
+        /* Sticky Bottom Navigation Bar for Mobile Phones */
+        .mobile-action-bar {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+            padding: 10px 15px;
+            gap: 10px;
+            z-index: 2000;
+        }
+
+        .action-bar-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-call { background: #2f855a; color: white; }
+        .btn-book { background: #3182ce; color: white; }
+
+        @media (min-width: 481px) {
+            .mobile-action-bar { display: none; } /* Hidden on desktop screens */
+            body { padding-bottom: 0; }
+        }
+
+        /* Footer */
+        footer {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: #90cdf4; text-decoration: none; }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Perfect Air Service</h1>
-    <p>Heating • Cooling • Repair • Maintenance • Replacement</p>
-    <p>Serving Maryland, Virginia & Washington DC</p>
-    <a href="#contact" class="btn">Call Now</a>
-</header>
-
-<section class="about">
-    <h2>About Us</h2>
-    <p>
-        At <span class="highlight">Perfect Air Service</span>, we provide
-        professional HVAC solutions throughout the DMV area. Whether you need
-        a system replacement, emergency repair, or routine maintenance,
-        we're committed to keeping your home comfortable year-round.
-    </p>
-</section>
-
-<section>
-    <h2>Our Services</h2>
-
-    <div class="services">
-
-        <div class="card">
-            <h3>HVAC Repair</h3>
-            <p>
-                Fast and reliable repair services for air conditioners,
-                furnaces, heat pumps, and complete HVAC systems.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>System Replacement</h3>
-            <p>
-                Upgrade your old HVAC equipment with modern,
-                energy-efficient heating and cooling systems.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Preventive Maintenance</h3>
-            <p>
-                Regular tune-ups and inspections to improve efficiency,
-                lower energy costs, and prevent breakdowns.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-<section id="contact" class="contact">
-    <h2>Contact Perfect Air Service</h2>
-
-    <div class="phone">
-        📞 240-516-9392
+    <!-- Cloud Floating Engine Layer -->
+    <div class="cloud-container">
+        <div class="cloud"></div>
+        <div class="cloud"></div>
     </div>
 
-    <p>Serving Maryland, Virginia & Washington DC</p>
-    <p>Call today for service, maintenance, or a free replacement estimate.</p>
-</section>
+    <header>
+        <div class="logo-area">
+            <span class="logo-cloud-icon">☁️</span>
+            <span class="logo-text">PERFECT AIR</span>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#book">Book Now</a>
+            <a href="#reviews">Reviews</a>
+        </nav>
+    </header>
 
-<footer>
-    <p>© 2026 Perfect Air Service. All Rights Reserved.</p>
-</footer>
+    <section class="hero">
+        <h1>Reliable Indoor Comfort For Your Home</h1>
+        <p>Professional heating and cooling services tailored across the DMV regions.</p>
+    </section>
 
+    <div class="container">
+
+        <!-- About Card -->
+        <section id="about" class="section-card">
+            <h2><i class="fa fa-info-circle"></i> About Us</h2>
+            <p class="about-text">
+                Family-owned HVAC company proudly serving the DMV areas (DC, Maryland and Virginia). We specialize in air conditioning repair, furnace installation, heating system maintenance, and full HVAC system replacements. Our team provides fast diagnostics, honest pricing, and same-week service whenever possible. Whether you need emergency AC repair in the summer or furnace service in the winter, we deliver reliable comfort solutions for your home. Licensed and insured. Free estimates available. Call today for professional heating and cooling service you can trust.
+            </p>
+            
+            <div class="info-stack">
+                <a href="tel:2405169392" class="info-box">
+                    <i class="fa fa-phone-alt"></i>
+                    <div>
+                        <h3>Tap to Call or Text</h3>
+                        <p>(240) 516-9392</p>
+                    </div>
+                </a>
+                <a href="mailto:jexxersondiaz@gmail.com" class="info-box">
+                    <i class="fa fa-envelope"></i>
+                    <div>
+                        <h3>Email Contact</h3>
+                        <p>jexxersondiaz@gmail.com</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Dynamic Form Target Integration -->
+        <section id="book" class="section-card">
+            <h2><i class="fa fa-calendar-check"></i> Book Appointment</h2>
+            <form onsubmit="sendAppointmentEmail(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="(240) 516-9392">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" required>
+                        <option value="">-- select service option --</option>
+                        <option value="AC Repair/Replacement">AC Repair or Replacement</option>
+                        <option value="Furnace/Heating Service">Furnace / Heating Service</option>
+                        <option value="System Maintenance">HVAC System Maintenance</option>
+                        <option value="Free Estimate Request">Free Project Estimate</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">City / State</label>
+                    <input type="text" id="location" required placeholder="Silver Spring, MD">
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notes or System Issues</label>
+                    <textarea id="notes" rows="3" placeholder="Describe what's going on..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Booking Request</button>
+            </form>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="section-card">
+            <h2><i class="fa fa-star"></i> Customer Reviews</h2>
+            
+            <div class="review-form">
+                <h3 style="margin-bottom:12px; font-size:1rem;">Submit Live Review</h3>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <input type="text" id="revName" placeholder="Your Name" required>
+                    <select id="revStars">
+                        <option value="⭐⭐⭐⭐⭐">5 Stars ⭐⭐⭐⭐⭐</option>
+                        <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐ Graham</option>
+                    </select>
+                    <textarea id="revText" rows="2" placeholder="Write your review here..." required></textarea>
+                    <button type="button" onclick="addLocalReview()" class="submit-btn" style="margin-top:0; padding:12px;">Post Locally</button>
+                </div>
+            </div>
+
+            <div id="reviewsContainer">
+                <div class="review-post">
+                    <div class="review-header">
+                        <span>Carlos M. (Bethesda, MD)</span>
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation for a brand new system at an honest price."</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sticky Mobile App Touch Controller Element -->
+    <div class="mobile-action-bar">
+        <a href="tel:2405169392" class="action-bar-btn btn-call"><i class="fa fa-phone-alt"></i> Call Now</a>
+        <a href="#book" class="action-bar-btn btn-book"><i class="fa fa-calendar-alt"></i> Book Online</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Perfect Air. All Rights Reserved.</p>
+        <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.85;">
+            Licensed & Insured | DC, Maryland, & Virginia<br>
+            <a href="https://instagram.com/perfectairservice" target="_blank" style="margin-top: 5px; display:inline-block;"><i class="fab fa-instagram"></i> @perfectairservice</a>
+        </p>
+    </footer>
+
+    <script>
+        function sendAppointmentEmail(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const location = document.getElementById('location').value;
+            const notes = document.getElementById('notes').value;
+            
+            const emailTo = "jexxersondiaz@gmail.com";
+            const subject = encodeURIComponent(`Perfect Air Mobile Booking: ${service}`);
+            const body = encodeURIComponent(
+                `Perfect Air Appointment Detail Confirmation Form:\n\n` +
+                `Customer Name: ${name}\n` +
+                `Phone Number: ${phone}\n` +
+                `Location: ${location}\n` +
+                `Service Requested: ${service}\n\n` +
+                `Customer Notes:\n${notes}`
+            );
+            window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+        }
+
+        function addLocalReview() {
+            const nameInput = document.getElementById('revName');
+            const starsInput = document.getElementById('revStars');
+            const textInput = document.getElementById('revText');
+            
+            if(!nameInput.value || !textInput.value) {
+                alert("Please fill out your name and review content fields!");
+                return;
+            }
+            
+            const container = document.getElementById('reviewsContainer');
+            const newReview = document.createElement('div');
+            newReview.className = 'review-post';
+            newReview.innerHTML = `
+                <div class="review-header">
+                    <span>${nameInput.value}</span>
+                    <span class="stars">${starsInput.value}</span>
+                </div>
+                <p>"${textInput.value}"</p>
+            `;
+            container.insertBefore(newReview, container.firstChild);
+            nameInput.value = '';
+            textInput.value = '';
+        }
+    </script>
 </body>
 </html>
