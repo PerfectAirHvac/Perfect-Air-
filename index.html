@@ -19,13 +19,12 @@
         body {
             color: #2c3e50;
             overflow-x: hidden;
-            /* Matches the gradient from image_4.png and image_5.png */
             background: linear-gradient(180deg, #99ccff 0%, #cce6ff 40%, #e6f2ff 100%);
             min-height: 100vh;
             padding-bottom: 70px; /* Space for mobile sticky bottom navigation */
         }
 
-        /* --- SMOOTH REALISTIC MOBILE CLOUD EFFECT --- */
+        /* --- GENTLE MOVING CLOUD BACKGROUND EFFECT --- */
         .cloud-container {
             position: fixed;
             top: 0;
@@ -35,14 +34,14 @@
             z-index: -1;
             overflow: hidden;
             pointer-events: none;
-            opacity: 0.65;
+            opacity: 0.6;
         }
 
         .cloud {
             position: absolute;
             background: #ffffff;
             border-radius: 100px;
-            filter: blur(8px);
+            filter: blur(6px);
             box-shadow: 0 8px 20px rgba(255,255,255,0.4);
         }
         .cloud::before, .cloud::after {
@@ -52,24 +51,23 @@
             border-radius: 50%;
         }
         .cloud:nth-child(1) {
-            width: 200px; height: 60px; top: 15%; left: -220px;
-            animation: floatCloud 45s linear infinite;
+            width: 220px; height: 70px; top: 12%; left: -250px;
+            animation: floatCloud 50s linear infinite;
         }
-        .cloud:nth-child(1)::before { width: 80px; height: 80px; top: -40px; left: 30px; }
-        .cloud:nth-child(1)::after { width: 100px; height: 100px; top: -50px; left: 80px; }
+        .cloud:nth-child(1)::before { width: 90px; height: 90px; top: -45px; left: 35px; }
+        .cloud:nth-child(1)::after { width: 110px; height: 110px; top: -55px; left: 85px; }
 
         .cloud:nth-child(2) {
-            width: 140px; height: 45px; top: 45%; left: -160px;
-            animation: floatCloud 30s linear infinite;
-            animation-delay: 10s;
-            opacity: 0.8;
+            width: 160px; height: 50px; top: 50%; left: -180px;
+            animation: floatCloud 35s linear infinite;
+            animation-delay: 12s;
         }
-        .cloud:nth-child(2)::before { width: 60px; height: 60px; top: -30px; left: 20px; }
-        .cloud:nth-child(2)::after { width: 70px; height: 70px; top: -35px; left: 55px; }
+        .cloud:nth-child(2)::before { width: 65px; height: 65px; top: -32px; left: 22px; }
+        .cloud:nth-child(2)::after { width: 75px; height: 75px; top: -38px; left: 60px; }
 
         @keyframes floatCloud {
-            0% { transform: translateX(-10px); left: -250px; }
-            100% { transform: translateX(100vw); left: 100px; }
+            0% { left: -260px; }
+            100% { left: 105vw; }
         }
 
         /* Responsive Header Navigation */
@@ -82,29 +80,22 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            padding: 12px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* Clean logo layout modeling image_4.png */
         .logo-area {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .logo-cloud-icon {
-            font-size: 1.5rem;
-            color: #3182ce;
-        }
-
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #2b6cb0;
-            letter-spacing: 0.5px;
+        .logo-image {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
         }
 
         nav a {
@@ -117,54 +108,65 @@
         }
         nav a:hover { color: #2b6cb0; }
 
-        /* Mobile specific hide/display rules */
-        @media (max-width: 480px) {
-            nav { display: none; } /* Navigation moves to touch bar on mobile */
+        @media (max-width: 580px) {
+            nav { display: none; } /* Moves to mobile action bar targets */
             header { justify-content: center; }
         }
 
-        /* Hero Landing Section */
-        .hero {
-            padding: 120px 20px 40px 20px;
+        /* Hero / Dynamic Homepage Area Layout matching image_6.png theme */
+        .hero-homepage {
+            padding: 130px 20px 40px 20px;
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
+        .hero-logo-large {
+            max-width: 290px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.08));
+        }
+
+        .hero-homepage h1 {
+            font-size: 2.1rem;
             color: #1a365d;
             margin-bottom: 12px;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.25;
+        }
+
+        .hero-homepage p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            max-width: 550px;
         }
 
         @media (min-width: 768px) {
-            .hero { padding: 160px 20px 60px 20px; max-width: 800px; }
-            .hero h1 { font-size: 3.2rem; }
+            .hero-homepage { padding: 170px 20px 60px 20px; max-width: 900px; }
+            .hero-logo-large { max-width: 420px; }
+            .hero-homepage h1 { font-size: 3rem; }
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: #4a5568;
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
-
-        /* Main App Container layout */
+        /* Main App Container Layout */
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 0 15px;
         }
 
-        /* Card Elements */
+        /* Structural Cards */
         .section-card {
             background: rgba(255, 255, 255, 0.92);
             border-radius: 24px;
             padding: 25px 20px;
             margin-bottom: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(255,255,255,0.8);
         }
         @media (min-width: 768px) {
@@ -172,7 +174,7 @@
         }
 
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #2b6cb0;
             margin-bottom: 18px;
             display: flex;
@@ -186,7 +188,53 @@
             color: #4a5568;
         }
 
-        /* Contact Details Boxes */
+        /* --- NEW WORK IMAGE GALLERY LAYOUT --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Stacks vertically perfectly on smaller phones */
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: #e2e8f0;
+            aspect-ratio: 3 / 4; /* Maintains uniform clean vertical proportions */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 15px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Contact details interactive container links */
         .info-stack {
             display: flex;
             flex-direction: column;
@@ -203,34 +251,23 @@
             gap: 15px;
             text-decoration: none;
             color: inherit;
-            transition: background 0.2s;
         }
-        .info-box:active { background: #e2e8f0; }
-
         .info-box i {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #3182ce;
             background: white;
             padding: 12px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
+        .info-box h3 { font-size: 0.85rem; color: #718096; text-transform: uppercase; }
+        .info-box p { font-size: 1.1rem; font-weight: 700; color: #2d3748; }
 
-        .info-box h3 { font-size: 0.9rem; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; }
-        .info-box p { font-size: 1.1rem; font-weight: 700; color: #2d3748; margin-top: 2px; }
-
-        /* Form Controls optimized for mobile touch targets */
+        /* Form Controls */
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 6px;
             margin-bottom: 16px;
-        }
-
-        label {
-            font-weight: 600;
-            color: #4a5568;
-            font-size: 0.95rem;
         }
 
         input, select, textarea {
@@ -240,13 +277,6 @@
             font-size: 1rem;
             background: white;
             width: 100%;
-            -webkit-appearance: none; /* Uniform iOS display override */
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #3182ce;
-            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.25);
         }
 
         .submit-btn {
@@ -259,13 +289,10 @@
             font-weight: bold;
             cursor: pointer;
             width: 100%;
-            transition: background 0.2s;
-            margin-top: 8px;
             box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
         }
-        .submit-btn:active { background: #1a365d; }
 
-        /* Mobile Star Reviews Layout */
+        /* Review Engines Styles */
         .review-form {
             background: #edf2f7;
             padding: 20px;
@@ -286,11 +313,10 @@
             justify-content: space-between;
             margin-bottom: 6px;
             font-weight: bold;
-            font-size: 0.95rem;
         }
         .stars { color: #ecc94b; }
 
-        /* Sticky Bottom Navigation Bar for Mobile Phones */
+        /* Mobile Floating Thumb Bar navigation target */
         .mobile-action-bar {
             display: flex;
             position: fixed;
@@ -315,18 +341,16 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
-            text-align: center;
         }
 
         .btn-call { background: #2f855a; color: white; }
         .btn-book { background: #3182ce; color: white; }
 
-        @media (min-width: 481px) {
-            .mobile-action-bar { display: none; } /* Hidden on desktop screens */
+        @media (min-width: 581px) {
+            .mobile-action-bar { display: none; }
             body { padding-bottom: 0; }
         }
 
-        /* Footer */
         footer {
             background: #1a365d;
             color: white;
@@ -340,7 +364,7 @@
 </head>
 <body>
 
-    <!-- Cloud Floating Engine Layer -->
+    <!-- Moving Cloud Background Layer -->
     <div class="cloud-container">
         <div class="cloud"></div>
         <div class="cloud"></div>
@@ -348,24 +372,27 @@
 
     <header>
         <div class="logo-area">
-            <span class="logo-cloud-icon">☁️</span>
-            <span class="logo-text">PERFECT AIR</span>
+            <!-- Uses your cloud text asset from image_6.png as the tiny top-left nav logo -->
+            <img src="image_6.png" alt="Perfect Air Logo" class="logo-image">
         </div>
         <nav>
             <a href="#about">About</a>
+            <a href="#work">Our Work</a>
             <a href="#book">Book Now</a>
             <a href="#reviews">Reviews</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <!-- Homepage Top Section with large Logo as requested -->
+    <section class="hero-homepage">
+        <img src="image_6.png" alt="Perfect Air Cloud Logo" class="hero-logo-large">
         <h1>Reliable Indoor Comfort For Your Home</h1>
-        <p>Professional heating and cooling services tailored across the DMV regions.</p>
+        <p>Professional heating, cooling, and ventilation installations across MD, VA, and Washington D.C.</p>
     </section>
 
     <div class="container">
 
-        <!-- About Card -->
+        <!-- About Us Card -->
         <section id="about" class="section-card">
             <h2><i class="fa fa-info-circle"></i> About Us</h2>
             <p class="about-text">
@@ -376,21 +403,50 @@
                 <a href="tel:2405169392" class="info-box">
                     <i class="fa fa-phone-alt"></i>
                     <div>
-                        <h3>Tap to Call or Text</h3>
+                        <h3>Tap to Call / Text</h3>
                         <p>(240) 516-9392</p>
                     </div>
                 </a>
                 <a href="mailto:helpperfectair@gmail.com" class="info-box">
                     <i class="fa fa-envelope"></i>
                     <div>
-                        <h3>Email Contact</h3>
+                        <h3>Email Inbox</h3>
                         <p>helpperfectair@gmail.com</p>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- Dynamic Form Target Integration -->
+        <!-- --- NEW DYNAMIC PHOTO GALLERY SECTION --- -->
+        <section id="work" class="section-card">
+            <h2><i class="fa fa-tools"></i> Our Work</h2>
+            <p style="color: #4a5568; margin-bottom: 15px; font-size: 0.95rem;">Take a look at some of our recent professional HVAC installations, custom repairs, and system diagnostics completed throughout the DMV area.</p>
+            
+            <div class="gallery-grid">
+                <!-- Photo 2 Slot (image_7.png) -->
+                <div class="gallery-item">
+                    <img src="image_7.png" alt="Rooftop HVAC Installation">
+                    <div class="gallery-caption">Commercial Rooftop Replacement</div>
+                </div>
+                <!-- Photo 3 Slot (image_8.png) -->
+                <div class="gallery-item">
+                    <img src="image_8.png" alt="AC Condenser Diagnostic Testing">
+                    <div class="gallery-caption">Residential AC Diagnostic Maintenance</div>
+                </div>
+                <!-- Photo 4 Slot (image_9.png) -->
+                <div class="gallery-item">
+                    <img src="image_9.png" alt="HVAC Repair Maintenance Hardware">
+                    <div class="gallery-caption">Precision Repair Safety Setup</div>
+                </div>
+                <!-- Photo 5 Slot (image_10.png) -->
+                <div class="gallery-item">
+                    <img src="image_10.png" alt="Heavy Commercial Unit Assembly">
+                    <div class="gallery-caption">Full Packaged System Installation</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment Form Card -->
         <section id="book" class="section-card">
             <h2><i class="fa fa-calendar-check"></i> Book Appointment</h2>
             <form onsubmit="sendAppointmentEmail(event)">
@@ -424,7 +480,7 @@
             </form>
         </section>
 
-        <!-- Reviews Section -->
+        <!-- Interactive Reviews Card -->
         <section id="reviews" class="section-card">
             <h2><i class="fa fa-star"></i> Customer Reviews</h2>
             
@@ -434,7 +490,7 @@
                     <input type="text" id="revName" placeholder="Your Name" required>
                     <select id="revStars">
                         <option value="⭐⭐⭐⭐⭐">5 Stars ⭐⭐⭐⭐⭐</option>
-                        <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐ Graham</option>
+                        <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐⭐</option>
                     </select>
                     <textarea id="revText" rows="2" placeholder="Write your review here..." required></textarea>
                     <button type="button" onclick="addLocalReview()" class="submit-btn" style="margin-top:0; padding:12px;">Post Locally</button>
@@ -453,7 +509,7 @@
         </section>
     </div>
 
-    <!-- Sticky Mobile App Touch Controller Element -->
+    <!-- Sticky Mobile Touch Quick Action Bar -->
     <div class="mobile-action-bar">
         <a href="tel:2405169392" class="action-bar-btn btn-call"><i class="fa fa-phone-alt"></i> Call Now</a>
         <a href="#book" class="action-bar-btn btn-book"><i class="fa fa-calendar-alt"></i> Book Online</a>
