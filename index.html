@@ -17,7 +17,6 @@
         body {
             color: #2c3e50;
             overflow-x: hidden;
-            /* Matches the deep blue at the top of your logo and transitions smoothly down */
             background: linear-gradient(180deg, #3a8fd1 0%, #7ec0ee 20%, #cce6ff 50%, #e6f2ff 100%);
             min-height: 100vh;
             padding-bottom: 70px;
@@ -64,9 +63,9 @@
             header { justify-content: center; }
         }
 
-        /* Hero Homepage Layout - Smoother Integration */
+        /* --- Hero Layout (No Image Box) --- */
         .hero-homepage {
-            padding: 110px 0px 30px 0px;
+            padding: 130px 0px 40px 0px;
             text-align: center;
             width: 100%;
             display: flex;
@@ -74,43 +73,46 @@
             align-items: center;
         }
 
-        .hero-banner-container {
-            width: 100%;
-            max-width: 600px;
-            padding: 0 15px;
-            margin-bottom: 10px;
+        .brand-text-container {
+            margin-bottom: 15px;
+            padding: 10px 20px;
         }
 
-        .hero-logo-large {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            display: block;
+        /* Thick, heavy title styling */
+        .brand-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-family: 'Arial Black', -apple-system, sans-serif;
+            margin: 0;
+            line-height: 1;
         }
 
         .hero-homepage h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            margin: 20px 15px 10px 15px;
-            font-weight: 800;
-            line-height: 1.2;
+            opacity: 0.95;
+            margin: 15px 15px 10px 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .hero-homepage p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #f0f7ff;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
             margin-bottom: 20px;
             padding: 0 20px;
             max-width: 550px;
+            opacity: 0.9;
         }
 
         @media (min-width: 768px) {
-            .hero-homepage { padding: 140px 0px 40px 0px; }
-            .hero-banner-container { max-width: 750px; }
-            .hero-homepage h1 { font-size: 3.2rem; }
+            .hero-homepage { padding: 160px 0px 50px 0px; }
+            .brand-title { font-size: 5.5rem; letter-spacing: 4px; }
+            .hero-homepage h1 { font-size: 2.8rem; }
+            .hero-homepage p { font-size: 1.2rem; }
         }
 
         .container {
@@ -242,29 +244,6 @@
             box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
         }
 
-        .review-form {
-            background: #edf2f7;
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-        }
-
-        .review-post {
-            background: white;
-            padding: 18px;
-            border-radius: 16px;
-            margin-bottom: 12px;
-            border-left: 4px solid #4299e1;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-        .stars { color: #ecc94b; }
-
         .mobile-action-bar {
             display: flex;
             position: fixed;
@@ -314,6 +293,7 @@
 
     <header>
         <div class="logo-area">
+            <!-- Keeps a tidy icon for the top navigation bar -->
             <img src="IMG_9926.jpeg" alt="Perfect Air" class="logo-image">
         </div>
         <nav>
@@ -324,16 +304,17 @@
         </nav>
     </header>
 
+    <!-- --- CLEAN HERO HOME PAGE --- -->
     <section class="hero-homepage">
-        <div class="hero-banner-container">
-            <img src="IMG_9926.jpeg" alt="Perfect Air Cloud Logo" class="hero-logo-large">
+        <div class="brand-text-container">
+            <h2 class="brand-title">PERFECT AIR</h2>
         </div>
         <h1>Reliable Indoor Comfort</h1>
         <p>Professional heating, cooling, and ventilation installations across MD, VA, and Washington D.C.</p>
     </section>
 
     <div class="container">
-        <!-- About Card -->
+        <!-- About Section -->
         <section id="about" class="section-card">
             <h2><i class="fa fa-info-circle"></i> About Us</h2>
             <p class="about-text">
@@ -358,56 +339,44 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-                <!-- --- CORRECTED WORK GALLERY --- -->
+        <!-- --- CORRECTED WORK GALLERY --- -->
         <section id="work" class="section-card">
             <h2><i class="fa fa-tools"></i> Our Work</h2>
-            <p style="color: #4a5568; margin-bottom: 15px; font-size: 0.95rem;">Take a look at some of our recent professional HVAC installations, commercial systems, and precision tune-ups completed throughout the DMV area.</p>
-            
             <div class="gallery-grid">
-                <!-- image_23.png (Left) -->
                 <div class="gallery-item">
                     <img src="IMG_9763.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Residential AC Diagnostics</div>
                 </div>
-                <!-- image_23.png (Right) -->
                 <div class="gallery-item">
                     <img src="IMG_9761.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Residential Condenser Service</div>
                 </div>
-                <!-- image_22.png (Left) -->
                 <div class="gallery-item">
                     <img src="IMG_9105.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Rooftop Exhaust Ventilation</div>
                 </div>
-                <!-- image_22.png (Right) -->
                 <div class="gallery-item">
                     <img src="IMG_8652.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Commercial Rooftop Installation</div>
                 </div>
-                <!-- image_20.png (Left) -->
                 <div class="gallery-item">
                     <img src="IMG_8644.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Commercial Crane Unit Deployment</div>
                 </div>
-                <!-- image_20.png (Right) -->
                 <div class="gallery-item">
                     <img src="IMG_8651.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Precision System Calibration</div>
                 </div>
-                <!-- image_21.png (Left) -->
                 <div class="gallery-item">
                     <img src="IMG_8654.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Custom Commercial Duct Framing</div>
                 </div>
-                <!-- image_21.png (Right) -->
                 <div class="gallery-item">
                     <img src="IMG_8365.jpeg" alt="HVAC Work Installation">
                     <div class="gallery-caption">Indoor Furnace Heating Installation</div>
                 </div>
             </div>
         </section>
-
 
         <!-- Booking Form Card -->
         <section id="book" class="section-card">
@@ -444,7 +413,7 @@
             <div id="reviewsContainer">
                 <div class="review-post">
                     <div class="review-header">
-                        <span>Carlos M. </span>
+                        <span>Carlos M. (Bethesda, MD)</span>
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                     </div>
                     <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation."</p>
