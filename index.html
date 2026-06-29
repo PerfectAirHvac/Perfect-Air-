@@ -42,7 +42,6 @@
             align-items: center;
         }
 
-        /* Clean navigation link for home branding */
         .header-brand-name {
             text-decoration: none;
             color: #1a365d;
@@ -79,7 +78,6 @@
             padding: 10px 20px;
         }
 
-        /* Thick, heavy title styling */
         .brand-title {
             font-size: 3.5rem;
             font-weight: 900;
@@ -232,6 +230,13 @@
             width: 100%;
         }
 
+        /* Specifically style the problem description field */
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
         .submit-btn {
             background: #2b6cb0;
             color: white;
@@ -294,7 +299,6 @@
 
     <header>
         <div class="logo-area">
-            <!-- Text logo replaces the little image box for a clean aesthetic -->
             <a href="#" class="header-brand-name">PERFECT AIR</a>
         </div>
         <nav>
@@ -305,7 +309,6 @@
         </nav>
     </header>
 
-    <!-- --- CLEAN HERO HOME PAGE --- -->
     <section class="hero-homepage">
         <div class="brand-text-container">
             <h2 class="brand-title">PERFECT AIR</h2>
@@ -340,7 +343,7 @@
             </div>
         </section>
 
-        <!-- --- CORRECTED WORK GALLERY --- -->
+        <!-- Our Work Gallery -->
         <section id="work" class="section-card">
             <h2><i class="fa fa-tools"></i> Our Work</h2>
             <div class="gallery-grid">
@@ -404,6 +407,11 @@
                     <label for="location">City / State</label>
                     <input type="text" id="location" required>
                 </div>
+                <!-- New Problem Description Box -->
+                <div class="form-group">
+                    <label for="description">Describe Your Problem</label>
+                    <textarea id="description" placeholder="Please let us know what issues you are experiencing (e.g., AC not cooling, unusual noise, system leak...)" required></textarea>
+                </div>
                 <button type="submit" class="submit-btn">Send Booking Request</button>
             </form>
         </section>
@@ -440,7 +448,12 @@
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
             const location = document.getElementById('location').value;
-            window.location.href = `mailto:helpperfectair@gmail.com?subject=Booking&body=${name}-${phone}-${service}-${location}`;
+            const description = document.getElementById('description').value;
+            
+            // Constructs the email text with lines clearly breaking up the info
+            const emailBody = `Name: ${name}%0D%0APhone: ${phone}%0D%0AService: ${service}%0D%0ALocation: ${location}%0D%0A%0D%0ADescription of Problem:%0D%0A${description}`;
+            
+            window.location.href = `mailto:helpperfectair@gmail.com?subject=New Booking Request - ${name}&body=${emailBody}`;
         }
     </script>
 </body>
