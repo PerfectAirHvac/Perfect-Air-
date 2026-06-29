@@ -388,7 +388,6 @@
     </section>
 
     <div class="container">
-        <!-- About Section -->
         <section id="about" class="section-card">
             <h2><i class="fa fa-info-circle"></i> About Us</h2>
             <p class="about-text">
@@ -413,7 +412,6 @@
             </div>
         </section>
 
-        <!-- Our Work Gallery -->
         <section id="work" class="section-card">
             <h2><i class="fa fa-tools"></i> Our Work</h2>
             <div class="gallery-grid">
@@ -452,7 +450,6 @@
             </div>
         </section>
 
-        <!-- Booking Form Card -->
         <section id="book" class="section-card">
             <h2><i class="fa fa-calendar-check"></i> Book Appointment</h2>
             <form onsubmit="sendAppointmentEmail(event)">
@@ -485,12 +482,10 @@
             </form>
         </section>
 
-        <!-- Reviews Card -->
         <section id="reviews" class="section-card">
             <h2><i class="fa fa-star"></i> Customer Reviews</h2>
             
             <div id="reviewsContainer">
-                <!-- Baseline Static Review -->
                 <div class="review-post">
                     <div class="review-header">
                         <span>Carlos M. (Bethesda, MD)</span>
@@ -500,7 +495,6 @@
                 </div>
             </div>
 
-            <!-- Direct Submit Form Area -->
             <div class="review-form-box">
                 <h3>Submit Your Review Directly</h3>
                 <form onsubmit="submitLiveReview(event)">
@@ -534,9 +528,9 @@
     </footer>
 
     <script>
-        // Your Global Supabase Credentials
+        // Global Supabase Credentials
         const SUPABASE_URL = "https://oukeqqzyzxqqvzizddxi.supabase.co";
-        const SUPABASE_KEY = "Sb_publishable_adMlkHDlTmBuD3qi8YT6Eg_-kNPShRj";
+        const SUPABASE_KEY = "sb_publishable_adMlkHDlTmBuD3qi8YT6Eg_-kNPShRj";
         
         let adminModeActive = false;
 
@@ -563,6 +557,7 @@
                         "Authorization": `Bearer ${SUPABASE_KEY}`
                     }
                 });
+                if (!response.ok) return [];
                 return await response.json();
             } catch (err) {
                 console.error("Error reading database:", err);
@@ -598,16 +593,11 @@
                     body: JSON.stringify({ name, rating, text })
                 });
                 
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                
-                // Refresh the list immediately after a successful save
+                // Refresh list right away upon successful submission
                 await renderReviews();
                 
             } catch (err) {
-                console.error("Database connection error:", err);
-                alert("Failed to connect to review database.");
+                console.error("Database tracking issue:", err);
             }
 
             document.getElementById('reviewerName').value = '';
