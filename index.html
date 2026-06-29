@@ -230,7 +230,6 @@
             width: 100%;
         }
 
-        /* Specifically style the problem description field */
         textarea {
             resize: vertical;
             min-height: 100px;
@@ -248,6 +247,70 @@
             cursor: pointer;
             width: 100%;
             box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+        }
+
+        /* --- Review Card Elements --- */
+        .review-post {
+            background: #f7fafc;
+            padding: 18px;
+            border-radius: 16px;
+            border-left: 4px solid #ecc94b;
+            margin-bottom: 20px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #2d3748;
+        }
+
+        .stars {
+            color: #ecc94b;
+            font-size: 0.9rem;
+        }
+
+        .review-post p {
+            font-style: italic;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        /* Review submission button styling */
+        .review-action-area {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed #e2e8f0;
+        }
+
+        .write-review-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #edf2f7;
+            color: #2b6cb0;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid #2b6cb0;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        @media(min-width: 580px) {
+            .write-review-btn { width: auto; }
+        }
+
+        .write-review-btn:hover {
+            background: #2b6cb0;
+            color: white;
         }
 
         .mobile-action-bar {
@@ -407,7 +470,6 @@
                     <label for="location">City / State</label>
                     <input type="text" id="location" required>
                 </div>
-                <!-- New Problem Description Box -->
                 <div class="form-group">
                     <label for="description">Describe Your Problem</label>
                     <textarea id="description" placeholder="Please let us know what issues you are experiencing (e.g., AC not cooling, unusual noise, system leak...)" required></textarea>
@@ -422,11 +484,18 @@
             <div id="reviewsContainer">
                 <div class="review-post">
                     <div class="review-header">
-                        <span>Carlos M. </span>
+                        <span>Carlos M. (Bethesda, MD)</span>
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                     </div>
                     <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation."</p>
                 </div>
+            </div>
+
+            <!-- New Action Area where visitors can click to leave a review -->
+            <div class="review-action-area">
+                <a href="mailto:helpperfectair@gmail.com?subject=Perfect Air - Customer Review Feedback" class="write-review-btn">
+                    <i class="fa fa-pen-alt"></i> Leave Us A Review
+                </a>
             </div>
         </section>
     </div>
@@ -450,7 +519,6 @@
             const location = document.getElementById('location').value;
             const description = document.getElementById('description').value;
             
-            // Constructs the email text with lines clearly breaking up the info
             const emailBody = `Name: ${name}%0D%0APhone: ${phone}%0D%0AService: ${service}%0D%0ALocation: ${location}%0D%0A%0D%0ADescription of Problem:%0D%0A${description}`;
             
             window.location.href = `mailto:helpperfectair@gmail.com?subject=New Booking Request - ${name}&body=${emailBody}`;
