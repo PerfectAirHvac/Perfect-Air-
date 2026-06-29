@@ -256,6 +256,7 @@
             border-radius: 16px;
             border-left: 4px solid #ecc94b;
             margin-bottom: 15px;
+            position: relative;
         }
 
         .review-header {
@@ -266,6 +267,7 @@
             font-weight: bold;
             font-size: 0.95rem;
             color: #2d3748;
+            padding-right: 65px; /* Leave space for delete button if visible */
         }
 
         .stars {
@@ -279,7 +281,22 @@
             line-height: 1.5;
         }
 
-        /* Inline Review Form Custom Adjustments */
+        /* Hidden Delete Button Styling */
+        .delete-review-btn {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         .review-form-box {
             margin-top: 25px;
             padding-top: 25px;
@@ -473,8 +490,8 @@
         <section id="reviews" class="section-card">
             <h2><i class="fa fa-star"></i> Customer Reviews</h2>
             
-            <!-- This container holds all static and newly submitted reviews -->
             <div id="reviewsContainer">
+                <!-- Baseline Static Review -->
                 <div class="review-post">
                     <div class="review-header">
                         <span>Carlos M. (Bethesda, MD)</span>
@@ -484,7 +501,7 @@
                 </div>
             </div>
 
-            <!-- New Live Direct Form Area -->
+            <!-- Direct Submit Form Area -->
             <div class="review-form-box">
                 <h3>Submit Your Review Directly</h3>
                 <form onsubmit="submitLiveReview(event)">
@@ -518,6 +535,8 @@
     </footer>
 
     <script>
+        let adminModeActive = false;
+
         function sendAppointmentEmail(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
@@ -531,59 +550,79 @@
             window.location.href = `mailto:helpperfectair@gmail.com?subject=New Booking Request - ${name}&body=${emailBody}`;
         }
 
-        // Handles posting new reviews directly onto the page surface dynamically
         function submitLiveReview(event) {
             event.preventDefault();
-            const name = document.getElementById('reviewerName').value;
+            const name = document.getElementById('reviewerName').value.trim();
             const rating = document.getElementById('reviewerRating').value;
             const text = document.getElementById('reviewerText').value;
 
-            const newReview = { name, rating, text };
+            // SECRET TRICK: If you type 'perfectair2026' into the Name box, it unlocks delete mode!
+            if (name === 'perfectair2026') {
+                adminModeActive = !adminModeActive;
+                alert(adminModeActive ? "Admin Mode ON: Delete buttons revealed!" : "Admin Mode OFF");
+                renderReviews();
+                document.getElementById('reviewerName').value = '';
+                document.getElementById('reviewerText').value = '';
+                return;
+            }
 
-            // Fetch existing live reviews stored locally or make an empty array
+            const newReview = { id: Date.now(), name, rating, text };
+
             let liveReviews = JSON.parse(localStorage.getItem('perfectAirReviews')) || [];
             liveReviews.push(newReview);
             localStorage.setItem('perfectAirReviews', JSON.stringify(liveReviews));
 
-            // Refresh the display list instantly
             renderReviews();
 
-            // Reset form fields
             document.getElementById('reviewerName').value = '';
             document.getElementById('reviewerText').value = '';
+        }
+
+        // The function you wanted to delete unwanted reviews!
+        function deleteReview(reviewId) {
+            if (confirm("Are you sure you want to delete this review from the website surface?")) {
+                let liveReviews = JSON.parse(localStorage.getItem('perfectAirReviews')) || [];
+                liveReviews = liveReviews.filter(review => review.id !== reviewId);
+                localStorage.setItem('perfectAirReviews', JSON.stringify(liveReviews));
+                renderReviews();
+            }
         }
 
         function renderReviews() {
             const container = document.getElementById('reviewsContainer');
             
-            // Re-render baseline layout with our original anchor review
             container.innerHTML = `
                 <div class="review-post">
                     <div class="review-header">
-                        <span>Carlos M. </span>
+                        <span>Carlos M. (Bethesda, MD)</span>
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                     </div>
                     <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation."</p>
                 </div>
             `;
 
-            // Append any dynamically added items from localStorage
             let liveReviews = JSON.parse(localStorage.getItem('perfectAirReviews')) || [];
             liveReviews.forEach(review => {
                 const reviewDiv = document.createElement('div');
                 reviewDiv.className = 'review-post';
+                
+                // Show delete button only if admin logged in
+                const deleteButtonHtml = adminModeActive 
+                    ? `<button class="delete-review-btn" style="display:block;" onclick="deleteReview(${review.id})">Delete</button>` 
+                    : '';
+
                 reviewDiv.innerHTML = `
                     <div class="review-header">
                         <span>${review.name}</span>
                         <span class="stars">${review.rating}</span>
                     </div>
                     <p>"${review.text}"</p>
+                    ${deleteButtonHtml}
                 `;
                 container.appendChild(reviewDiv);
             });
         }
 
-        // Run automatically when page first boots up to keep custom reviews visible
         window.onload = renderReviews;
     </script>
 </body>
