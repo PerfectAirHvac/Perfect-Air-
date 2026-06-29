@@ -63,7 +63,7 @@
             header { justify-content: center; }
         }
 
-        /* --- Hero Layout (No Image Box) --- */
+        /* --- Hero Layout --- */
         .hero-homepage {
             padding: 130px 0px 40px 0px;
             text-align: center;
@@ -249,13 +249,13 @@
             box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
         }
 
-        /* --- Review Card Elements --- */
+        /* --- Review Styles --- */
         .review-post {
             background: #f7fafc;
             padding: 18px;
             border-radius: 16px;
             border-left: 4px solid #ecc94b;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .review-header {
@@ -279,38 +279,29 @@
             line-height: 1.5;
         }
 
-        /* Review submission button styling */
-        .review-action-area {
-            text-align: center;
+        /* Inline Review Form Custom Adjustments */
+        .review-form-box {
             margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px dashed #e2e8f0;
+            padding-top: 25px;
+            border-top: 2px dashed #e2e8f0;
+        }
+        
+        .review-form-box h3 {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 12px;
         }
 
-        .write-review-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: #edf2f7;
-            color: #2b6cb0;
-            padding: 14px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            border: 2px solid #2b6cb0;
-            transition: all 0.2s ease;
-            width: 100%;
-        }
-
-        @media(min-width: 580px) {
-            .write-review-btn { width: auto; }
-        }
-
-        .write-review-btn:hover {
-            background: #2b6cb0;
+        .btn-review-submit {
+            background: #2f855a;
             color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(47, 133, 90, 0.2);
         }
 
         .mobile-action-bar {
@@ -481,6 +472,8 @@
         <!-- Reviews Card -->
         <section id="reviews" class="section-card">
             <h2><i class="fa fa-star"></i> Customer Reviews</h2>
+            
+            <!-- This container holds all static and newly submitted reviews -->
             <div id="reviewsContainer">
                 <div class="review-post">
                     <div class="review-header">
@@ -491,11 +484,25 @@
                 </div>
             </div>
 
-            <!-- New Action Area where visitors can click to leave a review -->
-            <div class="review-action-area">
-                <a href="mailto:helpperfectair@gmail.com?subject=Perfect Air - Customer Review Feedback" class="write-review-btn">
-                    <i class="fa fa-pen-alt"></i> Leave Us A Review
-                </a>
+            <!-- New Live Direct Form Area -->
+            <div class="review-form-box">
+                <h3>Submit Your Review Directly</h3>
+                <form onsubmit="submitLiveReview(event)">
+                    <div class="form-group">
+                        <input type="text" id="reviewerName" placeholder="Your Name & City (e.g., John D. from Rockville)" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="reviewerRating" required>
+                            <option value="⭐⭐⭐⭐⭐">5 Stars ⭐⭐⭐⭐⭐</option>
+                            <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐⭐</option>
+                            <option value="⭐⭐⭐">3 Stars ⭐⭐⭐</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="reviewerText" placeholder="Write your feedback here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-review-submit">Post Review to Website</button>
+                </form>
             </div>
         </section>
     </div>
@@ -523,6 +530,61 @@
             
             window.location.href = `mailto:helpperfectair@gmail.com?subject=New Booking Request - ${name}&body=${emailBody}`;
         }
+
+        // Handles posting new reviews directly onto the page surface dynamically
+        function submitLiveReview(event) {
+            event.preventDefault();
+            const name = document.getElementById('reviewerName').value;
+            const rating = document.getElementById('reviewerRating').value;
+            const text = document.getElementById('reviewerText').value;
+
+            const newReview = { name, rating, text };
+
+            // Fetch existing live reviews stored locally or make an empty array
+            let liveReviews = JSON.parse(localStorage.getItem('perfectAirReviews')) || [];
+            liveReviews.push(newReview);
+            localStorage.setItem('perfectAirReviews', JSON.stringify(liveReviews));
+
+            // Refresh the display list instantly
+            renderReviews();
+
+            // Reset form fields
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewerText').value = '';
+        }
+
+        function renderReviews() {
+            const container = document.getElementById('reviewsContainer');
+            
+            // Re-render baseline layout with our original anchor review
+            container.innerHTML = `
+                <div class="review-post">
+                    <div class="review-header">
+                        <span>Carlos M. (Bethesda, MD)</span>
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation."</p>
+                </div>
+            `;
+
+            // Append any dynamically added items from localStorage
+            let liveReviews = JSON.parse(localStorage.getItem('perfectAirReviews')) || [];
+            liveReviews.forEach(review => {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.className = 'review-post';
+                reviewDiv.innerHTML = `
+                    <div class="review-header">
+                        <span>${review.name}</span>
+                        <span class="stars">${review.rating}</span>
+                    </div>
+                    <p>"${review.text}"</p>
+                `;
+                container.appendChild(reviewDiv);
+            });
+        }
+
+        // Run automatically when page first boots up to keep custom reviews visible
+        window.onload = renderReviews;
     </script>
 </body>
 </html>
