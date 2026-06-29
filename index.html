@@ -31,7 +31,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            padding: 10px 20px;
+            padding: 18px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -40,14 +40,15 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 8px;
         }
 
-        .logo-image {
-            height: 35px;
-            width: auto;
-            border-radius: 4px;
-            object-fit: contain;
+        /* Clean navigation link for home branding */
+        .header-brand-name {
+            text-decoration: none;
+            color: #1a365d;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
         nav a {
@@ -293,8 +294,8 @@
 
     <header>
         <div class="logo-area">
-            <!-- Keeps a tidy icon for the top navigation bar -->
-            <img src="IMG_9926.jpeg" alt="Perfect Air" class="logo-image">
+            <!-- Text logo replaces the little image box for a clean aesthetic -->
+            <a href="#" class="header-brand-name">PERFECT AIR</a>
         </div>
         <nav>
             <a href="#about">About</a>
