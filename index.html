@@ -31,7 +31,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            pointer-events: none; /* Allows user to click things through the clouds */
+            pointer-events: none;
             z-index: 0;
         }
 
@@ -47,7 +47,7 @@
             animation: drift linear infinite;
         }
 
-        /* Cloud Variations: Sizing, Positions, and Speeds */
+        /* Cloud Variations */
         .cloud-1 { width: 450px; height: 180px; top: 12%; animation-duration: 45s; opacity: 0.6; }
         .cloud-2 { width: 350px; height: 140px; top: 28%; animation-duration: 35s; animation-delay: -10s; opacity: 0.5; }
         .cloud-3 { width: 550px; height: 220px; top: 45%; animation-duration: 55s; animation-delay: -25s; opacity: 0.4; }
@@ -68,7 +68,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            padding: 18px 20px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -79,12 +79,11 @@
             align-items: center;
         }
 
-        .header-brand-name {
-            text-decoration: none;
-            color: #1a365d;
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+        /* --- Header Logo Style --- */
+        .header-logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
         }
 
         nav a {
@@ -102,7 +101,7 @@
 
         /* --- Hero Layout --- */
         .hero-homepage {
-            padding: 130px 0px 40px 0px;
+            padding: 130px 0px 30px 0px;
             text-align: center;
             width: 100%;
             display: flex;
@@ -112,27 +111,26 @@
             z-index: 1;
         }
 
-        .brand-text-container {
-            margin-bottom: 15px;
-            padding: 10px 20px;
+        /* --- Main Hero Logo Style --- */
+        .hero-logo-container {
+            max-width: 90%;
+            width: 550px;
+            margin-bottom: 5px;
+            padding: 0 20px;
         }
 
-        .brand-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            font-family: 'Arial Black', -apple-system, sans-serif;
-            margin: 0;
-            line-height: 1;
+        .hero-logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
         }
 
         .hero-homepage h1 {
             font-size: 1.8rem;
             color: #ffffff;
             opacity: 0.95;
-            margin: 15px 15px 10px 15px;
+            margin: 10px 15px 10px 15px;
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -147,8 +145,8 @@
         }
 
         @media (min-width: 768px) {
-            .hero-homepage { padding: 160px 0px 50px 0px; }
-            .brand-title { font-size: 5.5rem; letter-spacing: 4px; }
+            .hero-homepage { padding: 150px 0px 40px 0px; }
+            .hero-logo-container { width: 680px; }
             .hero-homepage h1 { font-size: 2.8rem; }
             .hero-homepage p { font-size: 1.2rem; }
         }
@@ -421,7 +419,8 @@
 
     <header>
         <div class="logo-area">
-            <a href="#" class="header-brand-name">PERFECT AIR</a>
+            <!-- Nav Logo Option -->
+            <a href="#"><img src="logo.png" alt="Perfect Air Logo" class="header-logo-img"></a>
         </div>
         <nav>
             <a href="#about">About</a>
@@ -432,8 +431,9 @@
     </header>
 
     <section class="hero-homepage">
-        <div class="brand-text-container">
-            <h2 class="brand-title">PERFECT AIR</h2>
+        <!-- Main Homepage Logo Graphic -->
+        <div class="hero-logo-container">
+            <img src="logo.png" alt="Perfect Air Brand Logo" class="hero-logo-img">
         </div>
         <h1>Reliable Indoor Comfort</h1>
         <p>Professional heating, cooling, and ventilation installations across MD, VA, and Washington D.C.</p>
