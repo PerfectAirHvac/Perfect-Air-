@@ -20,43 +20,6 @@
             background: linear-gradient(180deg, #3a8fd1 0%, #7ec0ee 20%, #cce6ff 50%, #e6f2ff 100%);
             min-height: 100vh;
             padding-bottom: 70px;
-            position: relative;
-        }
-
-        /* --- Moving Clouds Background Container --- */
-        .cloud-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Pure CSS Clouds */
-        .cloud {
-            position: absolute;
-            background: radial-gradient(circle at 30% 60%, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 40%, transparent 70%),
-                        radial-gradient(circle at 60% 40%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 50%, transparent 80%),
-                        radial-gradient(circle at 80% 60%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 40%, transparent 70%);
-            filter: blur(8px);
-            border-radius: 50%;
-            opacity: 0.75;
-            animation: drift linear infinite;
-        }
-
-        /* Cloud Variations */
-        .cloud-1 { width: 450px; height: 180px; top: 12%; animation-duration: 45s; opacity: 0.6; }
-        .cloud-2 { width: 350px; height: 140px; top: 28%; animation-duration: 35s; animation-delay: -10s; opacity: 0.5; }
-        .cloud-3 { width: 550px; height: 220px; top: 45%; animation-duration: 55s; animation-delay: -25s; opacity: 0.4; }
-        .cloud-4 { width: 400px; height: 160px; top: 62%; animation-duration: 40s; animation-delay: -5s; opacity: 0.5; }
-        .cloud-5 { width: 300px; height: 120px; top: 80%; animation-duration: 30s; animation-delay: -15s; opacity: 0.4; }
-
-        @keyframes drift {
-            0% { transform: translateX(105vw); }
-            100% { transform: translateX(-550px); }
         }
 
         header {
@@ -68,7 +31,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            padding: 12px 20px;
+            padding: 18px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -79,13 +42,12 @@
             align-items: center;
         }
 
-        /* --- Fixed Header Logo Sizing --- */
-        .header-logo-img {
-            height: 45px;
-            max-height: 45px;
-            width: auto;
-            display: block;
-            object-fit: contain;
+        .header-brand-name {
+            text-decoration: none;
+            color: #1a365d;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
         nav a {
@@ -103,33 +65,28 @@
 
         /* --- Hero Layout --- */
         .hero-homepage {
-            padding: 110px 0px 20px 0px;
+            padding: 130px 0px 40px 0px;
             text-align: center;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            z-index: 1;
         }
 
-        /* --- Container to Stop Layout Collapsing --- */
-        .hero-logo-container {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
+        .brand-text-container {
+            margin-bottom: 15px;
+            padding: 10px 20px;
         }
 
-        .hero-logo-img {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            display: block;
-            object-fit: contain;
-            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+        .brand-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-family: 'Arial Black', -apple-system, sans-serif;
+            margin: 0;
+            line-height: 1;
         }
 
         .hero-homepage h1 {
@@ -151,10 +108,9 @@
         }
 
         @media (min-width: 768px) {
-            .hero-homepage { padding: 140px 0px 30px 0px; }
-            .hero-logo-container { max-width: 600px; }
-            .hero-logo-img { max-width: 550px; }
-            .hero-homepage h1 { font-size: 2.6rem; }
+            .hero-homepage { padding: 160px 0px 50px 0px; }
+            .brand-title { font-size: 5.5rem; letter-spacing: 4px; }
+            .hero-homepage h1 { font-size: 2.8rem; }
             .hero-homepage p { font-size: 1.2rem; }
         }
 
@@ -162,8 +118,6 @@
             max-width: 850px;
             margin: 0 auto;
             padding: 0 15px;
-            position: relative;
-            z-index: 1;
         }
 
         .section-card {
@@ -407,25 +361,15 @@
             padding: 35px 20px;
             margin-top: 40px;
             font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
         }
         footer a { color: #90cdf4; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <div class="cloud-background">
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <div class="cloud cloud-3"></div>
-        <div class="cloud cloud-4"></div>
-        <div class="cloud cloud-5"></div>
-    </div>
-
     <header>
         <div class="logo-area">
-            <a href="#"><img src="IMG_9926.jpeg" alt="Perfect Air Logo" class="header-logo-img"></a>
+            <a href="#" class="header-brand-name">PERFECT AIR</a>
         </div>
         <nav>
             <a href="#about">About</a>
@@ -436,14 +380,15 @@
     </header>
 
     <section class="hero-homepage">
-        <div class="hero-logo-container">
-            <img src="IMG_9926.jpeg" alt="Perfect Air Brand Logo" class="hero-logo-img">
+        <div class="brand-text-container">
+            <h2 class="brand-title">PERFECT AIR</h2>
         </div>
         <h1>Reliable Indoor Comfort</h1>
         <p>Professional heating, cooling, and ventilation installations across MD, VA, and Washington D.C.</p>
     </section>
 
     <div class="container">
+        <!-- About Section -->
         <section id="about" class="section-card">
             <h2><i class="fa fa-info-circle"></i> About Us</h2>
             <p class="about-text">
@@ -468,6 +413,7 @@
             </div>
         </section>
 
+        <!-- Our Work Gallery -->
         <section id="work" class="section-card">
             <h2><i class="fa fa-tools"></i> Our Work</h2>
             <div class="gallery-grid">
@@ -506,6 +452,7 @@
             </div>
         </section>
 
+        <!-- Booking Form Card -->
         <section id="book" class="section-card">
             <h2><i class="fa fa-calendar-check"></i> Book Appointment</h2>
             <form onsubmit="sendAppointmentEmail(event)">
@@ -538,10 +485,12 @@
             </form>
         </section>
 
+        <!-- Reviews Card -->
         <section id="reviews" class="section-card">
             <h2><i class="fa fa-star"></i> Customer Reviews</h2>
             
             <div id="reviewsContainer">
+                <!-- Baseline Static Review -->
                 <div class="review-post">
                     <div class="review-header">
                         <span>Carlos M. (Bethesda, MD)</span>
@@ -551,6 +500,7 @@
                 </div>
             </div>
 
+            <!-- Direct Submit Form Area -->
             <div class="review-form-box">
                 <h3>Submit Your Review Directly</h3>
                 <form onsubmit="submitLiveReview(event)">
@@ -584,6 +534,7 @@
     </footer>
 
     <script>
+        // Global Supabase Credentials
         const SUPABASE_URL = "https://oukeqqzyzxqqvzizddxi.supabase.co";
         const SUPABASE_KEY = "sb_publishable_adMlkHDlTmBuD3qi8YT6Eg_-kNPShRj";
         
@@ -602,6 +553,7 @@
             window.location.href = `mailto:helpperfectair@gmail.com?subject=New Booking Request - ${name}&body=${emailBody}`;
         }
 
+        // Fetch and load global reviews from Supabase Cloud
         async function fetchSupabaseReviews() {
             try {
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews?select=*&order=id.asc`, {
@@ -619,12 +571,14 @@
             }
         }
 
+        // Post a review globally to Supabase Cloud
         async function submitLiveReview(event) {
             event.preventDefault();
             const name = document.getElementById('reviewerName').value.trim();
             const rating = document.getElementById('reviewerRating').value;
             const text = document.getElementById('reviewerText').value;
 
+            // Case-insensitive admin keyword check (.toLowerCase())
             if (name.toLowerCase() === 'perfectair2026') {
                 adminModeActive = !adminModeActive;
                 alert(adminModeActive ? "Admin Mode ON: Delete buttons revealed globally!" : "Admin Mode OFF");
@@ -635,7 +589,7 @@
             }
 
             try {
-                await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
                     method: "POST",
                     headers: {
                         "apikey": SUPABASE_KEY,
@@ -644,7 +598,9 @@
                     },
                     body: JSON.stringify({ name, rating, text })
                 });
+                
                 await renderReviews();
+                
             } catch (err) {
                 console.error("Database tracking issue:", err);
             }
@@ -653,6 +609,7 @@
             document.getElementById('reviewerText').value = '';
         }
 
+        // Delete a review permanently from Supabase cloud database
         async function deleteReview(reviewId) {
             if (confirm("Are you sure you want to permanently delete this review from the cloud database?")) {
                 try {
@@ -672,6 +629,8 @@
 
         async function renderReviews() {
             const container = document.getElementById('reviewsContainer');
+            
+            // Baseline Anchor Review
             container.innerHTML = `
                 <div class="review-post">
                     <div class="review-header">
@@ -682,11 +641,13 @@
                 </div>
             `;
 
+            // Load new cloud reviews
             const cloudReviews = await fetchSupabaseReviews();
             if (Array.isArray(cloudReviews)) {
                 cloudReviews.forEach(review => {
                     const reviewDiv = document.createElement('div');
                     reviewDiv.className = 'review-post';
+                    
                     const deleteButtonHtml = adminModeActive 
                         ? `<button class="delete-review-btn" style="display:block;" onclick="deleteReview(${review.id})">Delete</button>` 
                         : '';
