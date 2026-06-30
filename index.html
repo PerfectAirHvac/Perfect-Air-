@@ -31,7 +31,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            pointer-events: none; /* Allows user to click things through the clouds */
+            pointer-events: none;
             z-index: 0;
         }
 
@@ -47,7 +47,7 @@
             animation: drift linear infinite;
         }
 
-        /* Cloud Variations: Sizing, Positions, and Speeds */
+        /* Cloud Variations */
         .cloud-1 { width: 450px; height: 180px; top: 12%; animation-duration: 45s; opacity: 0.6; }
         .cloud-2 { width: 350px; height: 140px; top: 28%; animation-duration: 35s; animation-delay: -10s; opacity: 0.5; }
         .cloud-3 { width: 550px; height: 220px; top: 45%; animation-duration: 55s; animation-delay: -25s; opacity: 0.4; }
@@ -68,7 +68,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            padding: 18px 20px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -79,12 +79,11 @@
             align-items: center;
         }
 
-        .header-brand-name {
-            text-decoration: none;
-            color: #1a365d;
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+        /* --- Header Logo Style --- */
+        .header-logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
         }
 
         nav a {
@@ -102,7 +101,7 @@
 
         /* --- Hero Layout --- */
         .hero-homepage {
-            padding: 130px 0px 40px 0px;
+            padding: 130px 0px 30px 0px;
             text-align: center;
             width: 100%;
             display: flex;
@@ -112,27 +111,26 @@
             z-index: 1;
         }
 
-        .brand-text-container {
-            margin-bottom: 15px;
-            padding: 10px 20px;
+        /* --- Main Hero Logo Style --- */
+        .hero-logo-container {
+            max-width: 90%;
+            width: 550px;
+            margin-bottom: 5px;
+            padding: 0 20px;
         }
 
-        .brand-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            font-family: 'Arial Black', -apple-system, sans-serif;
-            margin: 0;
-            line-height: 1;
+        .hero-logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
         }
 
         .hero-homepage h1 {
             font-size: 1.8rem;
             color: #ffffff;
             opacity: 0.95;
-            margin: 15px 15px 10px 15px;
+            margin: 10px 15px 10px 15px;
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -147,577 +145,11 @@
         }
 
         @media (min-width: 768px) {
-            .hero-homepage { padding: 160px 0px 50px 0px; }
-            .brand-title { font-size: 5.5rem; letter-spacing: 4px; }
+            .hero-homepage { padding: 150px 0px 40px 0px; }
+            .hero-logo-container { width: 680px; }
             .hero-homepage h1 { font-size: 2.8rem; }
             .hero-homepage p { font-size: 1.2rem; }
         }
 
         .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 0 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 25px 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-        }
-        @media (min-width: 768px) {
-            .section-card { padding: 40px; }
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            color: #2b6cb0;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 1.65;
-            color: #4a5568;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin-top: 15px;
-        }
-
-        @media (max-width: 580px) {
-            .gallery-grid { grid-template-columns: 1fr; }
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            background: #e2e8f0;
-            aspect-ratio: 3 / 4;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img { transform: scale(1.04); }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.75));
-            color: white;
-            padding: 15px 12px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .info-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .info-box {
-            background: #edf2f7;
-            padding: 16px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: inherit;
-        }
-        .info-box i {
-            font-size: 1.3rem;
-            color: #3182ce;
-            background: white;
-            padding: 12px;
-            border-radius: 12px;
-        }
-        .info-box h3 { font-size: 0.85rem; color: #718096; text-transform: uppercase; }
-        .info-box p { font-size: 1.1rem; font-weight: 700; color: #2d3748; }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin-bottom: 16px;
-        }
-
-        input, select, textarea {
-            padding: 14px;
-            border: 1px solid #cbd5e0;
-            border-radius: 12px;
-            font-size: 1rem;
-            background: white;
-            width: 100%;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-            font-family: inherit;
-        }
-
-        .submit-btn {
-            background: #2b6cb0;
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
-        }
-
-        /* --- Review Styles --- */
-        .review-post {
-            background: #f7fafc;
-            padding: 18px;
-            border-radius: 16px;
-            border-left: 4px solid #ecc94b;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            color: #2d3748;
-            padding-right: 65px;
-        }
-
-        .stars {
-            color: #ecc94b;
-            font-size: 0.9rem;
-        }
-
-        .review-post p {
-            font-style: italic;
-            color: #4a5568;
-            line-height: 1.5;
-        }
-
-        .delete-review-btn {
-            display: none;
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #e53e3e;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .review-form-box {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 2px dashed #e2e8f0;
-        }
-        
-        .review-form-box h3 {
-            font-size: 1.1rem;
-            color: #2d3748;
-            margin-bottom: 12px;
-        }
-
-        .btn-review-submit {
-            background: #2f855a;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 4px 12px rgba(47, 133, 90, 0.2);
-        }
-
-        .mobile-action-bar {
-            display: flex;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-            padding: 10px 15px;
-            gap: 10px;
-            z-index: 2000;
-        }
-
-        .action-bar-btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        .btn-call { background: #2f855a; color: white; }
-        .btn-book { background: #3182ce; color: white; }
-
-        @media (min-width: 581px) {
-            .mobile-action-bar { display: none; }
-            body { padding-bottom: 0; }
-        }
-
-        footer {
-            background: #1a365d;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-        }
-        footer a { color: #90cdf4; text-decoration: none; }
-    </style>
-</head>
-<body>
-
-    <!-- Infinite Clouds Background Layer -->
-    <div class="cloud-background">
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <div class="cloud cloud-3"></div>
-        <div class="cloud cloud-4"></div>
-        <div class="cloud cloud-5"></div>
-    </div>
-
-    <header>
-        <div class="logo-area">
-            <a href="#" class="header-brand-name">PERFECT AIR</a>
-        </div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#work">Our Work</a>
-            <a href="#book">Book Now</a>
-            <a href="#reviews">Reviews</a>
-        </nav>
-    </header>
-
-    <section class="hero-homepage">
-        <div class="brand-text-container">
-            <h2 class="brand-title">PERFECT AIR</h2>
-        </div>
-        <h1>Reliable Indoor Comfort</h1>
-        <p>Professional heating, cooling, and ventilation installations across MD, VA, and Washington D.C.</p>
-    </section>
-
-    <div class="container">
-        <!-- About Section -->
-        <section id="about" class="section-card">
-            <h2><i class="fa fa-info-circle"></i> About Us</h2>
-            <p class="about-text">
-                Family-owned HVAC company proudly serving the DMV areas (DC, Maryland and Virginia). We specialize in air conditioning repair, furnace installation, heating system maintenance, and full HVAC system replacements. Our team provides fast diagnostics, honest pricing, and same-week service whenever possible. Licensed and insured. Free estimates available.
-            </p>
-            
-            <div class="info-stack">
-                <a href="tel:2405169392" class="info-box">
-                    <i class="fa fa-phone-alt"></i>
-                    <div>
-                        <h3>Tap to Call / Text</h3>
-                        <p>(240) 516-9392</p>
-                    </div>
-                </a>
-                <a href="mailto:helpperfectair@gmail.com" class="info-box">
-                    <i class="fa fa-envelope"></i>
-                    <div>
-                        <h3>Email Inbox</h3>
-                        <p>helpperfectair@gmail.com</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Our Work Gallery -->
-        <section id="work" class="section-card">
-            <h2><i class="fa fa-tools"></i> Our Work</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="IMG_9763.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Residential AC Diagnostics</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_9761.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Residential Condenser Service</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_9105.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Rooftop Exhaust Ventilation</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8652.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Commercial Rooftop Installation</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8644.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Commercial Crane Unit Deployment</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8651.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Precision System Calibration</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8654.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Custom Commercial Duct Framing</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="IMG_8365.jpeg" alt="HVAC Work Installation">
-                    <div class="gallery-caption">Indoor Furnace Heating Installation</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Booking Form Card -->
-        <section id="book" class="section-card">
-            <h2><i class="fa fa-calendar-check"></i> Book Appointment</h2>
-            <form onsubmit="sendAppointmentEmail(event)">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="service">Service Needed</label>
-                    <select id="service" required>
-                        <option value="">-- select option --</option>
-                        <option value="AC Repair/Replacement">AC Repair or Replacement</option>
-                        <option value="Furnace/Heating Service">Furnace / Heating Service</option>
-                        <option value="System Maintenance">HVAC System Maintenance</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="location">City / State</label>
-                    <input type="text" id="location" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Describe Your Problem</label>
-                    <textarea id="description" placeholder="Please let us know what issues you are experiencing (e.g., AC not cooling, unusual noise, system leak...)" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Booking Request</button>
-            </form>
-        </section>
-
-        <!-- Reviews Card -->
-        <section id="reviews" class="section-card">
-            <h2><i class="fa fa-star"></i> Customer Reviews</h2>
-            
-            <div id="reviewsContainer">
-                <!-- Baseline Static Review -->
-                <div class="review-post">
-                    <div class="review-header">
-                        <span>Carlos M. (Bethesda, MD)</span>
-                        <span class="stars">⭐⭐⭐⭐⭐</span>
-                    </div>
-                    <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation."</p>
-                </div>
-            </div>
-
-            <!-- Direct Submit Form Area -->
-            <div class="review-form-box">
-                <h3>Submit Your Review Directly</h3>
-                <form onsubmit="submitLiveReview(event)">
-                    <div class="form-group">
-                        <input type="text" id="reviewerName" placeholder="Your Name & City (e.g., John D. from Rockville)" required>
-                    </div>
-                    <div class="form-group">
-                        <select id="reviewerRating" required>
-                            <option value="⭐⭐⭐⭐⭐">5 Stars ⭐⭐⭐⭐⭐</option>
-                            <option value="⭐⭐⭐⭐">4 Stars ⭐⭐⭐⭐</option>
-                            <option value="⭐⭐⭐">3 Stars ⭐⭐⭐</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="reviewerText" placeholder="Write your feedback here..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-review-submit">Post Review to Website</button>
-                </form>
-            </div>
-        </section>
-    </div>
-
-    <div class="mobile-action-bar">
-        <a href="tel:2405169392" class="action-bar-btn btn-call"><i class="fa fa-phone-alt"></i> Call Now</a>
-        <a href="#book" class="action-bar-btn btn-book"><i class="fa fa-calendar-alt"></i> Book Online</a>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Perfect Air. All Rights Reserved.</p>
-        <p><a href="https://instagram.com/perfectairservice" target="_blank">@perfectairservice</a></p>
-    </footer>
-
-    <script>
-        // Global Supabase Credentials
-        const SUPABASE_URL = "https://oukeqqzyzxqqvzizddxi.supabase.co";
-        const SUPABASE_KEY = "sb_publishable_adMlkHDlTmBuD3qi8YT6Eg_-kNPShRj";
-        
-        let adminModeActive = false;
-
-        function sendAppointmentEmail(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            const location = document.getElementById('location').value;
-            const description = document.getElementById('description').value;
-            
-            const emailBody = `Name: ${name}%0D%0APhone: ${phone}%0D%0AService: ${service}%0D%0ALocation: ${location}%0D%0A%0D%0ADescription of Problem:%0D%0A${description}`;
-            
-            window.location.href = `mailto:helpperfectair@gmail.com?subject=New Booking Request - ${name}&body=${emailBody}`;
-        }
-
-        // Fetch and load global reviews from Supabase Cloud
-        async function fetchSupabaseReviews() {
-            try {
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews?select=*&order=id.asc`, {
-                    method: "GET",
-                    headers: {
-                        "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${SUPABASE_KEY}`
-                    }
-                });
-                if (!response.ok) return [];
-                return await response.json();
-            } catch (err) {
-                console.error("Error reading database:", err);
-                return [];
-            }
-        }
-
-        // Post a review globally to Supabase Cloud
-        async function submitLiveReview(event) {
-            event.preventDefault();
-            const name = document.getElementById('reviewerName').value.trim();
-            const rating = document.getElementById('reviewerRating').value;
-            const text = document.getElementById('reviewerText').value;
-
-            // Case-insensitive admin keyword check (.toLowerCase())
-            if (name.toLowerCase() === 'perfectair2026') {
-                adminModeActive = !adminModeActive;
-                alert(adminModeActive ? "Admin Mode ON: Delete buttons revealed globally!" : "Admin Mode OFF");
-                renderReviews();
-                document.getElementById('reviewerName').value = '';
-                document.getElementById('reviewerText').value = '';
-                return;
-            }
-
-            try {
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
-                    method: "POST",
-                    headers: {
-                        "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${SUPABASE_KEY}`,
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ name, rating, text })
-                });
-                
-                await renderReviews();
-                
-            } catch (err) {
-                console.error("Database tracking issue:", err);
-            }
-
-            document.getElementById('reviewerName').value = '';
-            document.getElementById('reviewerText').value = '';
-        }
-
-        // Delete a review permanently from Supabase cloud database
-        async function deleteReview(reviewId) {
-            if (confirm("Are you sure you want to permanently delete this review from the cloud database?")) {
-                try {
-                    await fetch(`${SUPABASE_URL}/rest/v1/reviews?id=eq.${reviewId}`, {
-                        method: "DELETE",
-                        headers: {
-                            "apikey": SUPABASE_KEY,
-                            "Authorization": `Bearer ${SUPABASE_KEY}`
-                        }
-                    });
-                    renderReviews();
-                } catch (err) {
-                    alert("Error processing deletion request.");
-                }
-            }
-        }
-
-        async function renderReviews() {
-            const container = document.getElementById('reviewsContainer');
-            
-            // Baseline Anchor Review
-            container.innerHTML = `
-                <div class="review-post">
-                    <div class="review-header">
-                        <span>Carlos M. (Bethesda, MD)</span>
-                        <span class="stars">⭐⭐⭐⭐⭐</span>
-                    </div>
-                    <p>"Exceptional response time! Our AC blew out on a 90-degree day and they gave us same-week installation."</p>
-                </div>
-            `;
-
-            // Load new cloud reviews
-            const cloudReviews = await fetchSupabaseReviews();
-            if (Array.isArray(cloudReviews)) {
-                cloudReviews.forEach(review => {
-                    const reviewDiv = document.createElement('div');
-                    reviewDiv.className = 'review-post';
-                    
-                    const deleteButtonHtml = adminModeActive 
-                        ? `<button class="delete-review-btn" style="display:block;" onclick="deleteReview(${review.id})">Delete</button>` 
-                        : '';
-
-                    reviewDiv.innerHTML = `
-                        <div class="review-header">
-                            <span>${review.name}</span>
-                            <span class="stars">${review.rating}</span>
-                        </div>
-                        <p>"${review.text}"</p>
-                        ${deleteButtonHtml}
-                    `;
-                    container.appendChild(reviewDiv);
-                });
-            }
-        }
-
-        window.onload = renderReviews;
-    </script>
-</body>
-</html>
+            max-width:
